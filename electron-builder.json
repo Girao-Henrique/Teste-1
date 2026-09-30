@@ -1,0 +1,11 @@
+{
+  "appId":"br.paradise.game",
+  "productName":"Paradise",
+  "asar":true,
+  "compression":"maximum",
+  "directories":{"output":"builds/windows"},
+  "files":["desktop/main.cjs","desktop/preload.cjs","desktop/icon.png","www/**/*","package.json"],
+  "win":{"target":[{"target":"portable","arch":["x64"]}],"icon":"desktop/icon.ico","signAndEditExecutable":false,"artifactName":"Paradise-Windows-x64.${ext}"},
+  "portable":{"requestExecutionLevel":"user"},
+  "linux":{"target":"dir","icon":"desktop/icon.png","category":"Game"}
+}

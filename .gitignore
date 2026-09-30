@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+saves/*.json
+!saves/exemplo.json
+tests/artifacts/
+.cache/
+www/
+builds/
+android/signing/

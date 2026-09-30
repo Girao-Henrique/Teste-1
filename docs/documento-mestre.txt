@@ -1,0 +1,1306 @@
+                   PARADISE?
+Documento Mestre Alternativo de Conceito e Game Design
+
+                            Versão 2D Pixel Art
+          Versão consolidada alternativa para PC, perspectiva top-down
+
+
+
+
+                     Paradise? - Documento Mestre 2D Pixel Art |   1
+Este documento representa uma versão alternativa consolidada de Paradise?, concebida
+especificamente como um jogo 2D em pixel art.
+
+As decisões narrativas, estruturais e de gameplay permanecem as mesmas sempre que forem
+compatíveis com essa apresentação.
+
+Elementos originalmente dependentes de uma estrutura tridimensional foram adaptados para
+funcionar de maneira natural em um jogo 2D.
+
+Detalhes menores de implementação, balanceamento, apresentação e microdesign podem ser
+decididos durante o desenvolvimento, desde que preservem as regras e princípios definidos neste
+documento.
+
+
+1. Visão geral
+Paradise? é um jogo single-player para PC de:
+
+   survival;
+   exploração;
+   crafting;
+   combate;
+   fantasia.
+Sua apresentação é:
+
+   2D;
+   pixel art;
+   visão top-down;
+   movimentação livre em todas as direções.
+O jogo possui suporte a:
+
+   teclado e mouse;
+   gamepad.
+A direção artística deve utilizar pixel art estilizada, limpa e expressiva, com animações legíveis e
+cenários visualmente ricos sem depender de resolução excessivamente alta ou detalhamento
+visual incompatível com a estética.
+
+
+2. Princípio central
+Durante praticamente toda a experiência, o jogador deve acreditar que está jogando apenas um
+survival de fantasia agradável ambientado no paraíso.
+
+O jogo deve parecer genuinamente:
+
+   bonito;
+   acolhedor;
+   agradável;
+   colorido;
+   paradisíaco;
+
+                                Paradise? - Documento Mestre 2D Pixel Art |   2
+   fantástico.
+O pixel art deve reforçar essa aparência.
+
+O jogo não deve se apresentar como uma experiência de terror.
+
+Sua identidade não deve depender de:
+
+   gore;
+   horror corporal;
+   cenários grotescos;
+   estética demoníaca óbvia;
+   céus vermelhos usados para denunciar o inferno;
+   vegetação morta como símbolo explícito de corrupção;
+   mudanças visuais que transformem gradualmente o mundo em horror;
+   jumpscares como principal fonte de tensão.
+O verdadeiro horror de Paradise? surge da recontextualização narrativa.
+
+O jogador passa boa parte da campanha aceitando acontecimentos e mecânicas como convenções
+normais de videogame. Somente posteriormente entende o significado real dessas coisas.
+
+
+3. Direção de pixel art
+O visual deve parecer um jogo completo e estilizado, não apenas arte retrô por limitação técnica.
+
+Os sprites precisam possuir:
+
+   silhuetas fortes;
+   proporções reconhecíveis;
+   animações expressivas;
+   paleta coerente;
+   boa legibilidade durante combate;
+   diferenças claras entre personagem, inimigos, recursos e cenário.
+A simplicidade visual deve favorecer personalidade.
+
+Personagens e inimigos não devem parecer genéricos mesmo utilizando poucos detalhes.
+
+Cada criatura importante deve conseguir ser identificada principalmente através de:
+
+   silhueta;
+   formato;
+   animação;
+   cores;
+   comportamento.
+
+
+4. Perspectiva e leitura do mundo
+A câmera utiliza visão top-down.
+
+O jogador se movimenta livremente em todas as direções.
+
+                                Paradise? - Documento Mestre 2D Pixel Art |   3
+A composição dos mapas deve considerar constantemente a leitura 2D:
+
+   caminhos precisam permanecer claros;
+   elementos interativos precisam se destacar;
+   elevações devem ser comunicadas visualmente;
+   obstáculos devem ter colisões compreensíveis;
+   chefes e inimigos não devem desaparecer atrás de elementos de cenário sem necessidade.
+Elementos de cenário podem utilizar diferentes alturas, sobreposições e camadas para transmitir
+profundidade.
+
+
+5. Premissa aparente
+O protagonista morreu.
+
+Ele desperta sem compreender exatamente onde está e sem conseguir se lembrar claramente de
+sua vida anterior.
+
+Sua primeira interação acontece com o Porteiro.
+
+O Porteiro explica que ele morreu e chegou ao paraíso.
+
+Sua primeira fala importante é:
+
+                              “SEJA BEM-VINDO AO PARAÍSO!”
+O protagonista passa a acreditar que viverá naquele lugar depois da morte.
+
+Mais tarde, conhece o Guia.
+
+O Guia explica que cada pessoa que chega ao paraíso recebe uma missão apropriada às habilidades
+que possuía em vida.
+
+Existe aparentemente um desequilíbrio entre o paraíso e o submundo.
+
+Esse desequilíbrio teria provocado uma fenda entre os dois lugares.
+
+Criaturas teriam atravessado essa fenda e começado a contaminar o paraíso.
+
+Essas criaturas são chamadas de invasores.
+
+A missão do protagonista é ajudar a purificar o paraíso, combatendo os invasores e eventualmente
+solucionando a fenda.
+
+
+6. A dúvida sobre as habilidades do protagonista
+O Guia deixa claro desde o início que cada missão possui relação com habilidades que a pessoa
+tinha durante sua vida.
+
+Isso ajuda o protagonista a aceitar sua tarefa.
+
+A missão parece ter sido escolhida especificamente para ele.
+
+Ao mesmo tempo, isso cria uma pergunta para o jogador:
+
+
+
+                                Paradise? - Documento Mestre 2D Pixel Art |   4
+Que habilidades esse homem possuía enquanto estava vivo para ser considerado
+                 especialmente adequado a enfrentar e matar criaturas?
+
+7. A verdade sobre o protagonista
+O protagonista era, na realidade, um serial killer.
+
+Durante sua vida, assassinou 20 pessoas.
+
+Posteriormente:
+
+   seus crimes foram descobertos;
+   ele foi preso;
+   recebeu pena de morte;
+   foi executado através da cadeira elétrica.
+
+
+8. As 20 vítimas
+Existem 20 chefes principais.
+
+Cada chefe representa uma pessoa assassinada pelo protagonista.
+
+Durante quase todo o jogo, nem personagem nem jogador sabem disso.
+
+Leitura aparente
+São grandes invasores que precisam ser eliminados para salvar o paraíso.
+
+Leitura real
+As batalhas fazem o protagonista repetir simbolicamente os assassinatos que cometeu.
+
+
+9. Design visual dos chefes
+Os chefes devem parecer criaturas fantásticas.
+
+Não devem possuir aparência humana óbvia capaz de denunciar cedo demais que representam
+pessoas reais.
+
+Dentro do pixel art, cada chefe precisa possuir:
+
+   silhueta única;
+   paleta reconhecível;
+   tamanho e proporções próprios;
+   animações exclusivas;
+   padrões próprios;
+   arena com leitura clara.
+Chefes podem utilizar sprites maiores e mais detalhados que inimigos comuns.
+
+A dificuldade deve vir principalmente de:
+
+   leitura de padrões;
+
+                                Paradise? - Documento Mestre 2D Pixel Art |   5
+   movimentação;
+   posicionamento;
+   esquiva;
+   execução.
+Não apenas de grandes quantidades de vida.
+
+
+10. A vigésima vítima
+O 20º chefe representa a namorada do protagonista.
+
+Ele a amava e possuía um vínculo emocional particularmente forte com ela.
+
+Ela descobriu que ele era um serial killer.
+
+Depois disso, pretendia:
+
+   expor a verdade;
+   denunciar seus crimes às autoridades.
+Ele decidiu matá-la para impedir isso.
+
+O assassinato foi cometido com grande hesitação e tristeza.
+
+Ela foi morta através de envenenamento.
+
+Foi a morte emocionalmente mais difícil para ele.
+
+Por isso, sua representação é:
+
+   o último chefe;
+   o mais poderoso;
+   o mais difícil;
+   o confronto mais importante da campanha.
+
+
+11. A poção ácida
+Durante os nove primeiros biomas, existe um ingrediente principal em cada região.
+
+São nove ingredientes.
+
+Eles formam uma poção ácida.
+
+Essa substância é simultaneamente:
+
+   uma poção;
+   uma substância extremamente corrosiva.
+Ela é necessária especificamente contra o 20º chefe.
+
+Sua função é derreter a criatura.
+
+Narrativamente, representa o envenenamento da namorada.
+
+O que inicialmente parece uma longa missão de crafting passa a representar diretamente um dos
+assassinatos do protagonista.
+
+
+                                 Paradise? - Documento Mestre 2D Pixel Art |   6
+12. Estrutura do mundo
+O jogo possui 10 biomas.
+
+Cada bioma funciona como uma grande região 2D semiaberta.
+
+Os mapas podem utilizar:
+
+   áreas externas;
+   interiores;
+   cavernas;
+   clareiras;
+   margens;
+   ilhas;
+   ruínas;
+   estruturas;
+   passagens escondidas;
+   caminhos opcionais;
+   diferentes níveis de elevação representados através de tiles e transições visuais.
+A estrutura combina:
+
+   liberdade de exploração;
+   progressão linear.
+
+
+13. Construção dos mapas em 2D
+Cada região deve ser construída com:
+
+   tilesets próprios;
+   elementos reutilizáveis;
+   sprites de cenário;
+   objetos interativos;
+   efeitos ambientais;
+   variações de terreno.
+O mundo não deve parecer formado apenas por blocos repetidos.
+
+Mesmo utilizando tiles, cada bioma precisa possuir identidade visual própria.
+
+Marcos visuais importantes ajudam o jogador a compreender sua posição no mapa.
+
+
+14. Chefes por bioma
+Biomas 1 a 9: 2 chefes em cada.
+
+Total: 18 chefes.
+
+Bioma 10:
+
+   19º chefe;
+   20º chefe.
+                                Paradise? - Documento Mestre 2D Pixel Art |   7
+Total da campanha: 20 chefes.
+
+
+15. Progressão entre os nove primeiros biomas
+A progressão é propositalmente relativamente liberal.
+
+O segundo chefe de cada bioma ocupa uma posição que bloqueia naturalmente a transição para o
+próximo.
+
+Na progressão normal, o jogador precisa derrotá-lo.
+
+Isso deve ser comunicado através do próprio level design, não apenas por uma parede invisível ou
+mensagem artificial.
+
+Caso o jogador encontre alguma forma incomum de contornar a situação, não é obrigatório que o
+sistema crie uma barreira artificial simplesmente para impedir isso.
+
+
+16. Pendências e “fazer a limpa”
+Durante os nove primeiros biomas, o jogador precisa eventualmente:
+
+   derrotar os 18 chefes;
+   encontrar os 9 ingredientes.
+É possível avançar deixando temporariamente determinadas pendências.
+
+Entretanto, o 10º bioma só pode ser acessado depois que todos os nove anteriores estiverem
+concluídos.
+
+Para entrar nele:
+
+   os 18 chefes anteriores precisam estar derrotados;
+   os 9 ingredientes precisam ter sido coletados.
+Isso cria um momento em que o jogador precisa voltar e “fazer a limpa”.
+
+
+17. Purificação
+A ideia de purificar o paraíso existe narrativamente.
+
+Porém, não existem quotas obrigatórias de inimigos.
+
+Não há missões do tipo “Elimine 30 criaturas”.
+
+Os invasores surgem dinamicamente pelo mapa.
+
+Combatê-los faz parte naturalmente da exploração e sobrevivência.
+
+
+18. Inimigos comuns
+Existem diferentes arquétipos.
+
+A base pode incluir:
+
+   combatente corpo a corpo;
+
+                                 Paradise? - Documento Mestre 2D Pixel Art |   8
+   atacante à distância;
+   inimigo pesado;
+   elites ocasionais.
+Em pixel art, cada arquétipo precisa ser imediatamente reconhecível.
+
+É preferível possuir um conjunto relativamente compacto de inimigos bem diferenciados do que
+dezenas de sprites com pequenas diferenças.
+
+Biomas posteriores podem aumentar a dificuldade introduzindo comportamentos novos.
+
+
+19. Spawn de invasores
+Inimigos comuns aparecem dinamicamente em regiões apropriadas.
+
+O sistema deve evitar:
+
+   aparições injustas diretamente sobre o jogador;
+   excesso de inimigos causando poluição visual;
+   situações em que sprites se sobreponham a ponto de tornar ataques ilegíveis.
+O mapa deve continuar parecendo vivo sem se transformar em uma arena constantemente lotada.
+
+
+20. A verdade sobre os invasores
+Não existe uma invasão real.
+
+Não existe um desequilíbrio verdadeiro entre paraíso e inferno.
+
+A fenda e os invasores existem somente dentro da experiência da sentença.
+
+Eles são parte da ilusão construída para o protagonista.
+
+
+21. Biomas
+1. Jardins Celestes
+   campos verdes;
+   flores;
+   pequenos rios;
+   árvores frutíferas;
+   céu muito claro.
+
+2. Bosque Eterno
+   árvores antigas;
+   clareiras;
+   lagos;
+   vegetação densa.
+
+3. Campos Dourados
+   grandes planícies;
+
+                               Paradise? - Documento Mestre 2D Pixel Art |   9
+   vegetação dourada;
+   flores;
+   alta visibilidade.
+
+4. Arquipélago Celeste
+   praias;
+   pequenas ilhas;
+   água cristalina;
+   bancos de areia.
+
+5. Montanhas Brancas
+   montanhas claras;
+   cachoeiras;
+   vales;
+   vistas grandiosas.
+
+6. Floresta das Nuvens
+   regiões elevadas;
+   vegetação;
+   nuvens;
+   névoa branca.
+
+7. Jardim de Cristal
+   vegetação;
+   cristais;
+   cavernas luminosas;
+   lagos refletivos.
+
+8. Ilhas do Céu
+   grandes massas de terra flutuantes;
+   paisagens explicitamente impossíveis.
+
+9. Santuário da Luz
+   arquitetura monumental;
+   jardins;
+   rios;
+   sensação de proximidade com o coração do paraíso.
+
+10. Limite do Paraíso
+   região monumental;
+   mais vazia;
+   próxima da suposta fenda;
+   focada nos chefes finais e na conclusão.
+
+                                Paradise? - Documento Mestre 2D Pixel Art |   10
+22. Progressão visual
+Os primeiros biomas podem se aproximar de paisagens terrestres idealizadas.
+
+Os posteriores tornam-se gradativamente:
+
+    mais fantásticos;
+    mais impossíveis;
+    mais monumentais.
+Isso nunca significa caminhar visualmente em direção ao infernal.
+
+Mesmo o 10º bioma continua paradisíaco.
+
+
+23. Exploração e mapa
+O mapa é descoberto conforme o jogador explora.
+
+Pontos de interesse aparecem depois de encontrados.
+
+Segredos podem recompensar:
+
+    recursos;
+    receitas;
+    equipamentos;
+    melhorias permanentes;
+    conteúdo narrativo.
+O jogo não exige exploração de 100% de todas as regiões.
+
+
+24. Fast travel
+Existe viagem rápida.
+
+Ela funciona entre pontos fixos de suporte descobertos.
+
+Torna-se particularmente útil quando o jogador precisa retornar a biomas anteriores para:
+
+    derrotar chefes;
+    buscar ingredientes;
+    recuperar recursos;
+    resolver pendências.
+
+
+25. Loop central
+    explorar → coletar → sobreviver → fabricar → enfrentar invasores → descobrir
+     áreas → melhorar equipamentos/personagem → enfrentar chefes → avançar
+
+26. Survival
+Existem quatro estados principais:
+
+    saúde;
+                              Paradise? - Documento Mestre 2D Pixel Art |   11
+   fome;
+   sede;
+   sono.
+Esses sistemas precisam importar sem dominar toda a experiência.
+
+
+27. Fome e sede
+Fome e sede diminuem gradualmente.
+
+Quando atingem estado crítico, o protagonista começa a perder saúde.
+
+O ritmo deve ser leve o suficiente para não interromper constantemente a exploração.
+
+
+28. Sono
+Sono é uma necessidade lenta.
+
+A referência é aproximadamente 3 a 4 ciclos completos de dia e noite antes que a situação se torne
+realmente crítica.
+
+
+29. Privação de sono
+Quando o protagonista fica acordado por tempo demais, começam “alucinações”.
+
+Mecanicamente:
+
+   mais inimigos aparecem;
+   inimigos ficam mais fortes;
+   a pressão aumenta progressivamente.
+Esses inimigos conseguem realmente matar o jogador.
+
+
+30. Saúde, morte e respawn
+Quando a saúde chega a zero, o protagonista morre.
+
+Ele reaparece no último ponto de suporte/checkpoint visitado.
+
+Morrer causa perda parcial de recursos.
+
+Depois da revelação, o respawn também significa que não existe fuga da punição através da morte.
+
+
+31. Acampamentos
+O jogador pode criar acampamentos temporários para dormir.
+
+Eles:
+
+   permitem descanso;
+   não funcionam como checkpoint;
+   não funcionam como salvamento manual.
+
+
+
+                                Paradise? - Documento Mestre 2D Pixel Art |   12
+32. Pontos de suporte
+Pontos fixos podem oferecer:
+
+   descanso;
+   crafting;
+   armazenamento;
+   reparo;
+   upgrades;
+   checkpoint;
+   salvamento.
+O jogo possui salvamento automático.
+
+
+33. Armazenamento
+Cada ponto possui armazenamento próprio.
+
+Itens guardados em uma região não aparecem automaticamente em outra.
+
+Isso incentiva retornos e deslocamentos entre biomas.
+
+
+34. Inventário
+O inventário é relativamente amplo.
+
+Diretrizes:
+
+   stacks generosos;
+   organização simples;
+   itens de missão não competem agressivamente com recursos comuns;
+   não existe sistema adicional de peso.
+
+
+35. Crafting
+O crafting pode incluir:
+
+   ferramentas;
+   armas;
+   equipamentos;
+   alimentos;
+   recipientes;
+   cura;
+   exploração;
+   acampamento;
+   reparos;
+   itens de missão;
+   poção ácida.
+O número de receitas deve permanecer relativamente compacto.
+                               Paradise? - Documento Mestre 2D Pixel Art |   13
+36. Recursos
+A base pode utilizar elementos como:
+
+   madeira celestial;
+   pedra clara;
+   fibra vegetal;
+   frutas;
+   água;
+   ervas;
+   minérios;
+   cristais;
+   partes de invasores.
+Biomas podem possuir materiais exclusivos.
+
+
+37. Ciclo de dia e noite
+Existe ciclo de dia e noite.
+
+Referência: 12 a 15 minutos reais por ciclo completo.
+
+Durante o dia:
+
+   alta visibilidade;
+   exploração normal;
+   distribuição padrão de inimigos.
+Durante a noite:
+
+   o mundo continua bonito;
+   invasores podem ser mais frequentes;
+   determinados recursos e eventos podem variar.
+O mundo nunca se transforma visualmente em horror.
+
+
+38. Representação do ciclo em pixel art
+As mudanças entre dia e noite podem utilizar:
+
+   troca gradual de paleta;
+   overlays de iluminação;
+   alterações de contraste;
+   efeitos de partículas;
+   sombras estilizadas;
+   variações sutis de ambiente.
+A legibilidade nunca deve ser prejudicada.
+
+
+
+
+                               Paradise? - Documento Mestre 2D Pixel Art |   14
+39. Pausa do tempo
+O tempo pausa completamente durante:
+
+   menus;
+   inventário;
+   crafting;
+   diálogos;
+   cenas importantes.
+
+
+40. Combate
+O combate deve ser:
+
+   simples;
+   arcade;
+   responsivo;
+   fluido;
+   acessível.
+Não deve ser excessivamente técnico ou simulacionista.
+
+
+41. Combate top-down
+O personagem consegue atacar em todas as direções.
+
+A movimentação e direção dos ataques devem funcionar naturalmente na perspectiva superior.
+
+O sistema inclui:
+
+   ataque básico;
+   ataque forte/carregado;
+   esquiva;
+   sprint;
+   stamina;
+   armas corpo a corpo;
+   armas à distância;
+   cura por itens.
+
+
+42. Defesa
+A defesa é baseada principalmente em:
+
+   movimentação;
+   posicionamento;
+   esquiva.
+Bloqueio e parry não são pilares centrais.
+
+
+
+                              Paradise? - Documento Mestre 2D Pixel Art |   15
+43. Stamina
+Stamina é utilizada por:
+
+   ataques;
+   golpes fortes;
+   esquivas;
+   sprint.
+Caminhar normalmente não consome stamina.
+
+Ela regenera naturalmente.
+
+Não é uma quinta necessidade de survival.
+
+
+44. Mira e seleção de alvo
+Existe assistência automática.
+
+O sistema favorece um inimigo adequado próximo ao personagem.
+
+O jogador pode apertar um botão para alternar entre alvos disponíveis.
+
+Na apresentação top-down, o alvo selecionado deve ser comunicado de maneira simples e discreta.
+
+A solução visual específica pode ser escolhida durante a implementação.
+
+
+45. Arsenal base
+Corpo a corpo
+   espada;
+   machado;
+   lança;
+   martelo pesado;
+   adagas.
+
+Distância
+   arco;
+   besta.
+Armas especiais podem existir.
+
+O arsenal pode crescer futuramente.
+
+
+46. Filosofia das armas
+Armas devem possuir usos diferentes.
+
+A progressão não deve ser apenas uma sucessão de versões numericamente melhores do mesmo
+item.
+
+Diferenças podem envolver:
+
+                                 Paradise? - Documento Mestre 2D Pixel Art |   16
+   velocidade;
+   alcance;
+   área;
+   dano;
+   ritmo;
+   stamina;
+   comportamento do ataque.
+
+
+47. Animações de armas em pixel art
+Cada categoria de arma deve possuir animações suficientemente distintas para comunicar seu peso
+e comportamento.
+
+Exemplos:
+
+   espada: movimentos equilibrados;
+   machado: golpes pesados;
+   lança: alcance frontal;
+   martelo: impacto lento;
+   adagas: ataques rápidos;
+   arco: preparação e disparo;
+   besta: disparo e recarga.
+As animações devem permanecer simples e legíveis.
+
+
+48. Durabilidade
+Armas e ferramentas possuem durabilidade.
+
+Quando chega a zero:
+
+   quebram;
+   ficam inutilizáveis;
+   não desaparecem;
+   podem ser reparadas.
+O sistema não deve exigir manutenção excessivamente frequente.
+
+
+49. Progressão
+Não existem:
+
+   XP tradicional;
+   níveis tradicionais.
+A progressão vem através de:
+
+   exploração;
+   crafting;
+   equipamentos;
+
+                                Paradise? - Documento Mestre 2D Pixel Art |   17
+   recursos;
+   chefes;
+   descobertas;
+   melhorias permanentes.
+
+
+50. Atributos
+Existem poucos atributos melhoráveis:
+
+   saúde máxima;
+   stamina máxima;
+   regeneração de stamina;
+   velocidade de movimento.
+Eficiência de coleta pode existir caso tenha utilidade clara.
+
+
+51. Upgrades
+Equipamentos possuem poucos estágios de melhoria relevantes.
+
+Cada upgrade deve causar diferença perceptível.
+
+Evitar dezenas de níveis praticamente idênticos.
+
+
+52. Tutorial
+O tutorial pode ensinar:
+
+1. despertar;
+2. coleta;
+3. primeira ferramenta;
+4. alimento;
+5. água;
+6. descanso;
+7. primeira arma;
+8. primeiros invasores.
+O Guia participa fortemente desse início.
+
+
+53. O Porteiro
+Porteiro e Guia são personagens diferentes.
+
+O Porteiro recebe o protagonista quando ele desperta.
+
+Sua apresentação em pixel art deve possuir:
+
+   sprite próprio;
+   silhueta reconhecível;
+   animações próprias;
+   retrato ou expressão durante diálogo caso essa solução seja adotada.
+                               Paradise? - Documento Mestre 2D Pixel Art |   18
+54. O Guia
+O Guia funciona inicialmente como:
+
+   mentor;
+   NPC de tutorial;
+   responsável pela missão principal.
+Depois deixa de acompanhar constantemente o jogador e reaparece em momentos específicos.
+
+
+55. Verdade sobre o Guia
+Ele é o administrador do inferno responsável por sentenças.
+
+Ele:
+
+   participa da determinação das punições;
+   apresenta a sentença como outra coisa;
+   ensina o condenado a executá-la;
+   observa o processo;
+   garante que nada saia do controle.
+
+
+56. Hierarquia do inferno
+Existe uma autoridade ou criador acima do Guia.
+
+Isso faz parte da verdade completa do universo.
+
+Porém, isso nunca é explicado ao jogador.
+
+
+57. Memória
+Pessoas que realmente chegam ao paraíso preservam:
+
+   identidade;
+   lembranças.
+A amnésia do protagonista é uma pista.
+
+
+58. Lapsos de memória
+Lapsos podem surgir:
+
+   espontaneamente;
+   através de eventos;
+   locais;
+   objetos;
+   inimigos;
+   chefes;
+   ações.
+Podem utilizar:
+                              Paradise? - Documento Mestre 2D Pixel Art |   19
+   imagens em pixel art;
+   alterações breves de paleta;
+   flashes;
+   sprites sobrepostos;
+   sons;
+   pequenos trechos de animação;
+   combinações audiovisuais.
+
+
+59. Regra dos lapsos
+Eles não podem revelar cedo demais que o protagonista era um serial killer.
+
+Precisam ser:
+
+   incompletos;
+   ambíguos;
+   interpretáveis de formas diferentes.
+Somente no final passam a fazer sentido.
+
+
+60. Contradições do falso paraíso
+O jogador precisa:
+
+   comer;
+   beber;
+   dormir;
+   trabalhar;
+   coletar;
+   fabricar;
+   lutar;
+   matar;
+   reparar equipamentos;
+   sobreviver.
+Inicialmente tudo parece gameplay normal.
+
+Depois surge a pergunta:
+
+                  por que alguém no paraíso precisa passar por tudo isso?
+
+61. Bioma 10
+Ao entrar nele:
+
+   os 18 chefes anteriores estão derrotados;
+   os 9 ingredientes estão coletados.
+A região final concentra:
+
+   combate;
+                                Paradise? - Documento Mestre 2D Pixel Art |   20
+   19º chefe;
+   20º chefe;
+   poção ácida;
+   fenda;
+   final.
+
+
+62. 19º chefe
+Está localizado no 10º bioma.
+
+Sua identidade específica, arena, vítima correspondente e padrões podem ser definidos durante o
+desenvolvimento.
+
+
+63. 20º chefe
+Representa a namorada.
+
+É o confronto mais difícil.
+
+A poção ácida é necessária.
+
+Ela derrete a criatura.
+
+
+64. Habilidade elétrica/magnética
+Depois do 20º chefe, o protagonista recebe uma habilidade baseada em:
+
+   eletricidade;
+   magnetismo.
+Ela representa sua morte na cadeira elétrica.
+
+
+65. Representação visual da habilidade
+Em pixel art, essa habilidade deve possuir leitura visual forte através de elementos como:
+
+   sprites elétricos;
+   flashes;
+   partículas;
+   distorções;
+   atração de elementos;
+   efeitos de campo.
+A implementação específica pode ser decidida durante o desenvolvimento.
+
+
+66. Fechamento da fenda
+Depois do último chefe, existe uma etapa jogável relativamente simples usando a habilidade
+elétrica/magnética.
+
+Em seguida, a conclusão ocorre através de cena.
+
+                                Paradise? - Documento Mestre 2D Pixel Art |   21
+67. A fenda é falsa
+A fenda faz parte da ilusão.
+
+O protagonista acredita que está salvando o paraíso.
+
+Na realidade, está apenas terminando mais uma etapa da sentença.
+
+
+68. Revelação final
+A revelação acontece depois que a fenda é fechada.
+
+A sequência é:
+
+9. derrota do 20º chefe;
+10. aquisição da habilidade;
+11. fechamento da fenda;
+12. conclusão da missão aparente;
+13. chegada do Guia.
+
+
+69. Início da conversa final
+O Guia primeiro:
+
+   parabeniza o protagonista;
+   agradece pelo trabalho.
+Logo depois começa a revelar a verdade.
+
+
+70. Conteúdo da revelação
+O Guia explica:
+
+   quem o protagonista era;
+   que era um serial killer;
+   que matou 20 pessoas;
+   que os chefes eram suas vítimas;
+   que as batalhas repetiam simbolicamente os assassinatos;
+   quem era o 20º chefe;
+   o envenenamento da namorada;
+   o significado da poção;
+   sua prisão;
+   sua execução;
+   o significado da habilidade elétrica;
+   a verdadeira natureza do mundo;
+   a sentença;
+   o ciclo.
+
+
+
+                                 Paradise? - Documento Mestre 2D Pixel Art |   22
+71. Replays da gameplay
+Durante a revelação, momentos já jogados são revisitados.
+
+Na versão 2D, isso pode ser apresentado através de:
+
+     reprodução de sequências;
+     pequenas cenas reconstruídas;
+     recortes da gameplay;
+     montagem com sprites;
+     transições entre memória e acontecimentos anteriores.
+O objetivo é recontextualizar ações reais do jogador.
+
+
+72. Dupla interpretação
+    Elemento                          Primeira leitura                          Verdade
+    Paraíso                           Vida após a morte                         Inferno
+    Missão                            Salvar o paraíso                          Cumprir sentença
+    Invasores                         Criaturas do submundo                     Ilusão punitiva
+    Fenda                             Passagem entre mundos                     Parte da sentença
+    20 chefes                         Chefes do jogo                            20 vítimas
+    Derrotar chefes                   Purificação                               Repetição dos assassinatos
+    20º chefe                         Inimigo final                             Namorada
+    Poção ácida                       Ferramenta especial                       Envenenamento
+    Poder elétrico                    Habilidade final                          Cadeira elétrica
+    Guia                              Mentor                                    Administrador da punição
+    Respawn                           Regra do jogo                             Não há fuga
+    Amnésia                           Mistério                                  Parte da sentença
+    Survival                          Mecânica                                  Contradição do falso paraíso
+    Crafting                          Progressão                                Trabalho eterno
+
+73. Verdadeira natureza do lugar
+O protagonista nunca esteve no paraíso.
+
+Ele está no inferno.
+
+Toda a experiência é uma sentença construída especificamente para ele.
+
+Não existe redenção como objetivo.
+
+Não existe libertação como recompensa.
+
+
+74. A punição
+O protagonista está condenado a:
+
+     esquecer;
+     acreditar na mentira;
+     receber sua missão;
+                                  Paradise? - Documento Mestre 2D Pixel Art |   23
+   matar;
+   repetir simbolicamente seus crimes;
+   recriar o envenenamento;
+   reproduzir simbolicamente sua própria morte;
+   completar a missão;
+   descobrir a verdade;
+   esquecer novamente.
+
+
+75. Apagamento da memória
+Depois da revelação, a memória é apagada novamente.
+
+O jogador vê isso acontecer.
+
+
+76. Cena final
+O jogo retorna ao início do ciclo.
+
+A mesma primeira situação é mostrada novamente.
+
+Dessa vez, como cena.
+
+O Porteiro pronuncia:
+
+                               “SEJA BEM-VINDO AO PARAÍSO!”
+O jogo termina imediatamente.
+
+
+77. Linguagem
+Todo o jogo deve estar em português do Brasil.
+
+Isso inclui:
+
+   menus;
+   HUD;
+   diálogos;
+   nomes;
+   itens;
+   descrições;
+   tutoriais;
+   missões;
+   cenas;
+   narrativa;
+   configurações.
+
+
+78. Liberdade de implementação
+Detalhes menores podem ser decididos durante o desenvolvimento.
+
+                                Paradise? - Documento Mestre 2D Pixel Art |   24
+Isso inclui:
+
+   resolução base do pixel art;
+   tamanho de sprites;
+   quantidade de frames;
+   feedback visual;
+   efeitos;
+   partículas;
+   UI;
+   balanceamento;
+   valores numéricos;
+   pequenas receitas;
+   recursos específicos;
+   inimigos individuais;
+   layouts;
+   arenas;
+   pequenas histórias;
+   nomes provisórios;
+   pequenos detalhes técnicos.
+
+
+79. Guardrails definitivos
+1. Paradise? é um jogo 2D.
+2. Sua estética é pixel art.
+3. É desenvolvido para PC.
+4. Possui perspectiva top-down.
+5. Suporta teclado/mouse e gamepad.
+6. É survival, exploração e crafting.
+7. O combate é simples e arcade.
+8. O mundo continua bonito e paradisíaco.
+9. Terror explícito não domina a direção artística.
+10. O protagonista começa sem memória.
+11. Porteiro e Guia são personagens diferentes.
+12. O protagonista era um serial killer.
+13. Existem 20 vítimas.
+14. Existem 20 chefes.
+15. O 20º chefe representa a namorada.
+16. Ela morreu envenenada.
+17. Existem 10 biomas.
+18. Os nove primeiros possuem dois chefes cada.
+19. O décimo possui os chefes 19 e 20.
+
+                                Paradise? - Documento Mestre 2D Pixel Art |   25
+20. Existem nove ingredientes.
+21. Eles formam uma poção ácida.
+22. A poção derrete o chefe final.
+23. O jogador pode deixar pendências temporariamente.
+24. Antes do bioma 10 tudo precisa estar concluído.
+25. Não existem quotas numéricas de inimigos.
+26. Fast travel existe.
+27. Existem fome, sede, saúde e sono.
+28. Privação de sono aumenta a pressão dos inimigos.
+29. Respawn ocorre no último ponto fixo.
+30. Morrer causa perda parcial de recursos.
+31. Acampamentos permitem dormir.
+32. Acampamentos não são checkpoints.
+33. Armazenamentos são separados.
+34. Existe ciclo de dia e noite.
+35. Menus e cenas pausam o tempo.
+36. Não existe XP tradicional.
+37. Não existem níveis tradicionais.
+38. Existem poucos atributos melhoráveis.
+39. Equipamentos possuem upgrades compactos.
+40. Armas e ferramentas possuem durabilidade.
+41. O arsenal base permanece compacto.
+42. O protagonista morreu na cadeira elétrica.
+43. O poder elétrico final representa essa morte.
+44. A fenda não é real.
+45. A revelação acontece depois do fechamento da fenda.
+46. O Guia primeiro parabeniza o protagonista.
+47. A revelação utiliza momentos anteriores da gameplay.
+48. O mundo é o inferno.
+49. Tudo é uma punição.
+50. A memória é apagada.
+51. O ciclo recomeça.
+52. O Porteiro repete “SEJA BEM-VINDO AO PARAÍSO!”.
+53. O jogo termina nessa fala.
+
+
+80. Resumo definitivo
+Paradise? é um survival 2D em pixel art com perspectiva top-down para PC.
+
+Um homem morto e sem memória acredita ter chegado ao paraíso.
+
+                                   Paradise? - Documento Mestre 2D Pixel Art |   26
+Ele recebe a missão de purificar dez biomas de invasores que aparentemente atravessaram uma
+fenda vinda do submundo.
+
+Durante sua jornada, explora, coleta, fabrica equipamentos, sobrevive e enfrenta vinte chefes.
+
+Nos nove primeiros biomas, reúne ingredientes para uma poção ácida necessária contra o último
+deles.
+
+Depois do último chefe, recebe uma habilidade elétrica/magnética e fecha a fenda.
+
+O Guia o parabeniza.
+
+Então revela a verdade.
+
+O protagonista era um serial killer.
+
+Os vinte chefes eram suas vinte vítimas.
+
+O último chefe era sua namorada, morta através de envenenamento.
+
+A poção reproduzia simbolicamente esse assassinato.
+
+O protagonista foi preso e executado na cadeira elétrica.
+
+A habilidade elétrica representava sua própria morte.
+
+A invasão era falsa.
+
+A fenda era falsa.
+
+O paraíso nunca existiu.
+
+Ele está no inferno.
+
+Tudo aquilo é sua sentença.
+
+Depois da revelação, sua memória é apagada.
+
+O ciclo recomeça.
+
+A última cena retorna ao primeiro encontro com o Porteiro.
+
+Ele diz novamente:
+
+                              “SEJA BEM-VINDO AO PARAÍSO!”
+E o jogo termina.
+
+
+
+
+                               Paradise? - Documento Mestre 2D Pixel Art |   27
+

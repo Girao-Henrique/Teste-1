@@ -1,0 +1,23 @@
+{
+  "name": "paradise",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "prepare:app": "node scripts/prepare-app.mjs",
+    "desktop": "npm run prepare:app && electron .",
+    "build:windows": "npm run prepare:app && electron-builder --win portable --x64 --publish never",
+    "build:android": "npm run prepare:app && node scripts/build-android.mjs",
+    "test:mobile": "node tests/mobile.mjs"
+  },
+  "devDependencies": {
+    "electron": "44.5.1",
+    "electron-builder": "26.15.3"
+  },
+  "main": "desktop/main.cjs",
+  "description": "Paradise? — exploração e sobrevivência em pixel art",
+  "author": "Projeto Paradise?"
+}
