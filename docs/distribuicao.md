@@ -44,3 +44,7 @@ Preserve `android/signing/paradise.p12` e `android/signing/local.json` em um bac
 O aplicativo Electron foi aberto no ambiente Linux com os recursos incorporados, sem servidor HTTP. A geração do executável Windows foi validada, mas sua execução precisa ser confirmada em um PC Windows. A assinatura do APK foi verificada com `apksigner`; testes em dispositivo físico permanecem necessários para avaliar desempenho, áudio e compatibilidade de fabricantes.
 
 A instalação no emulador desta nuvem não concluiu devido à inicialização sem aceleração de hardware. A abertura do APK em Android nativo ainda precisa ser confirmada; os testes de toque foram executados em Chromium móvel.
+
+## Publicação pelo GitHub Actions
+
+O workflow manual `Publicar aplicativos Paradise?` gera o executável em Windows e publica os anexos de uma release de teste já preparada. O APK assinado fica em `distribution/android/`; sua chave não entra no repositório. O workflow confere o hash antes de enviar e mantém a release como prévia. Atualizações Android exigem substituir o APK e seu hash após compilação com a mesma chave local.

@@ -1,0 +1,56 @@
+name: Publicar aplicativos Paradise?
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag da release de teste previamente preparada
+        required: true
+        default: v1.0.0-pre.1
+permissions:
+  contents: write
+jobs:
+  publicar:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    env:
+      RELEASE_TAG: ${{ inputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Instalar ferramentas
+        run: |
+          npm ci
+          node node_modules/electron/install.js
+      - name: Validar sistemas e campanha
+        run: |
+          npm run check
+          npm test
+      - name: Gerar executável Windows
+        run: npm run build:windows
+      - name: Conferir APK e gerar hashes
+        shell: pwsh
+        run: |
+          $apk = 'distribution/android/Paradise-Android.apk'
+          $expected = (Get-Content distribution/android/SHA256SUMS.txt).Split(' ')[0]
+          $actual = (Get-FileHash $apk -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne $expected) { throw 'O APK não confere com a versão assinada.' }
+          $files = @('builds/windows/Paradise-Windows-x64.exe', $apk)
+          $lines = foreach ($file in $files) {
+            $hash = (Get-FileHash $file -Algorithm SHA256).Hash.ToLowerInvariant()
+            "$hash  $(Split-Path $file -Leaf)"
+          }
+          $lines | Set-Content builds/SHA256SUMS.txt -Encoding utf8NoBOM
+      - name: Anexar aplicativos e publicar release de teste
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY
+          if ($LASTEXITCODE -ne 0) { throw 'Prepare primeiro a release de destino.' }
+          gh release upload $env:RELEASE_TAG builds/windows/Paradise-Windows-x64.exe distribution/android/Paradise-Android.apk builds/SHA256SUMS.txt --repo $env:GITHUB_REPOSITORY --clobber
+          if ($LASTEXITCODE -ne 0) { throw 'Falha no envio dos aplicativos.' }
+          gh release edit $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --target $env:GITHUB_SHA --draft=false --prerelease
+          if ($LASTEXITCODE -ne 0) { throw 'Falha na publicação da release.' }
