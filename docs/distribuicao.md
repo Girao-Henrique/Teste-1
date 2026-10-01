@@ -41,9 +41,9 @@ Preserve `android/signing/paradise.p12` e `android/signing/local.json` em um bac
 
 `npm run check` e `npm test` verificam sintaxe, sistemas e campanhas completas nas duas dificuldades. Com o servidor de desenvolvimento ativo e Playwright instalado, `node tests/browser.mjs` verifica teclado, gamepad, menus, salvamento e encerramento; `npm run test:mobile` verifica menus de celular, multitoque, pausa, salvamento, rotação e encerramento por toque. Gere antes o save de teste com `EXPORT_CAMPAIGN=1 npm test`.
 
-O aplicativo Electron foi aberto no ambiente Linux com os recursos incorporados, sem servidor HTTP. A geração do executável Windows foi validada, mas sua execução precisa ser confirmada em um PC Windows. A assinatura do APK foi verificada com `apksigner`; testes em dispositivo físico permanecem necessários para avaliar desempenho, áudio e compatibilidade de fabricantes.
+O aplicativo Electron abriu em Linux com os recursos incorporados, sem servidor HTTP. O executável portátil também foi compilado e aberto no runner Windows do GitHub Actions: marca, fonte, introdução, movimento, pausa e tela cheia passaram. A assinatura do APK foi verificada com `apksigner`; o resultado da tentativa nativa está em [android-native-qa.md](android-native-qa.md).
 
-A instalação no emulador desta nuvem não concluiu devido à inicialização sem aceleração de hardware. A abertura do APK em Android nativo ainda precisa ser confirmada; os testes de toque foram executados em Chromium móvel.
+Nenhum aparelho físico foi testado nesta sessão. O Android virtual sem KVM pode sofrer lentidão e instabilidade do sistema; desempenho, áudio e compatibilidade de fabricantes precisam de avaliação em aparelhos reais.
 
 ## Publicação pelo GitHub Actions
 

@@ -11,7 +11,7 @@ Baixe os aplicativos na [release para PC e Android](https://github.com/Girao-Hen
 - [Windows 64 bits — executável portátil](https://github.com/Girao-Henrique/Teste-1/releases/download/v1.1.0-pre.1/Paradise-Windows-x64.exe).
 - [Android 8+ — APK](https://github.com/Girao-Henrique/Teste-1/releases/download/v1.1.0-pre.1/Paradise-Android.apk).
 
-Esta é a atualização visual 1.1.0, distribuída como versão de testes. A campanha, os menus e os layouts adaptativos foram verificados. O Android requer Android System WebView atualizado. Consulte os testes e limites em [validação](docs/validacao.md).
+Esta é a atualização visual 1.1.0, distribuída como versão de testes. A campanha, os menus e os layouts adaptativos foram verificados, e o executável abriu no Windows. O APK teve assinatura e instalação verificadas; seu fluxo nativo ainda precisa de confirmação em aparelho Android, pois o WebView do emulador falhou antes de carregar o jogo. O Android requer Android System WebView atualizado. Consulte os testes e limites em [validação](docs/validacao.md).
 
 O executável Windows está em `builds/windows/Paradise-Windows-x64.exe`; o APK Android está em `builds/android/Paradise-Android.apk`. Ambos incorporam o jogo e funcionam offline, sem endereço localhost. Consulte [instalação e geração de versões](docs/distribuicao.md). No celular, retrato e paisagem são jogáveis com controles de toque. A tela cheia acompanha o formato da tela.
 
@@ -20,6 +20,8 @@ O executável Windows está em `builds/windows/Paradise-Windows-x64.exe`; o APK 
 ![Menu original de Paradise?](docs/imagens/menu.png)
 
 ![Jardins Celestes e interface](docs/imagens/jardins.png)
+
+Mais imagens: [fabricação](docs/imagens/fabricacao.png) e [celular em retrato](docs/imagens/celular.png).
 
 ## Executar no ambiente de desenvolvimento
 

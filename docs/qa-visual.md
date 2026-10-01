@@ -25,3 +25,15 @@ A matriz automatizada complementa a inspeção das imagens. Ela não atesta o de
 `node tests/render.mjs` cria fixtures de apresentação para os dez biomas, seus marcos e a iluminação noturna. Exercita os 20 chefes com poses, ataques, indicadores, partículas e projéteis. As cenas completas devem manter todos os pixels opacos; as 16 folhas de arte precisam ter pixels visíveis e arquivos PNG válidos. Quadros de movimento das quatro direções do jogador, dos dois NPCs e dos três retratos precisam apresentar mudanças reais de pixels. Os chefes e os cinco quadros da fenda também são desenhados com margens externas para detectar cortes nas células de seus atlas.
 
 O teste também chama `Renderer.resize()` em retrato, paisagem, quadrado e ultrawide, compara as proporções, confirma a amostragem sem suavização e verifica a conversão da mira em coordenadas do mundo. Chama `exportSheets()` e guarda uma cópia dos atlas somente em `tests/artifacts/render/atlas/`, sem substituir os recursos de produção. Galerias, cenas e diagnóstico ficam em `tests/artifacts/render/` para inspeção manual.
+
+## Resultado da revisão 1.1.0
+
+A matriz final foi executada em 1º de outubro de 2026, das 03:37:30 às 03:43:07 UTC, com fontes, interface e câmera de combate finais. Os 12 perfis passaram, com 220 capturas de telas, as 19 falas iniciais em cada perfil, nenhum erro de JavaScript e nenhuma solicitação a recursos externos. O diagnóstico inclui horários de início e término de cada perfil; ele resulta de uma execução completa, sem combinar ou omitir falhas de rodadas anteriores.
+
+Passaram as verificações de limites, sobreposição, controles encobertos, proporção e preenchimento do canvas. Mochila, fabricação, diário, mapa, pausa, configurações, controles e as quatro abas de apoio permaneceram utilizáveis com rolagem interna quando necessário. Movimento real por teclado e multitoque, pausa da simulação nos painéis e chamadas de tela cheia também passaram.
+
+A validação final de renderização passou em 288 verificações, produzindo 92 imagens e 16 folhas de arte. Confirmou sprites distintos dos 20 chefes, poses animadas, quadros do jogador/NPCs/retratos, cenas opacas, PNGs válidos, conversão da mira e ausência dos cortes identificados nos atlas da Medusa e da fenda.
+
+Na revisão, foram corrigidas as interseções da barra do chefe com o cabeçalho, as notificações sobre os botões especiais e a margem das notificações sobre o diário em ultrawide. As capturas de combate de 640×320 e 844×390 também foram inspecionadas: jogador e chefe permanecem no centro livre da barra, da poção e dos controles. Em combate nas telas horizontais baixas, o renderer usa um eixo lógico curto de 480 pixels; na exploração usa 360. A proporção permanece uniforme nos dois casos.
+
+Esses resultados são de Chromium com pontes nativas simuladas. A validação de execução dos aplicativos e da campanha é registrada separadamente; esta matriz não representa testes em aparelhos físicos.

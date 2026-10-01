@@ -1,40 +1,39 @@
-# Validação da versão integrada
+# Validação da atualização visual 1.1.0
 
-O Documento Mestre foi lido integralmente na raiz antes da arquitetura. A revisão preservou biomas, personagens, 20 chefes/vítimas, nove ingredientes, survival e sequência final.
+O Documento Mestre foi lido diretamente da raiz. A revisão preserva os dez biomas, os vinte chefes, os nove ingredientes, os sistemas de sobrevivência e a ordem da sequência final.
 
 ## Sistemas e campanha
 
-`npm test` verifica os sistemas e as campanhas normal e tranquila. Os testes de campanha coletam recursos por interação, fabricam e melhoram equipamentos, administram provisões, enfrentam invasores comuns e vencem os vinte chefes com ataques, movimento e esquivas da simulação. Os testes não alteram vida, dano, fôlego ou inventário para forçar vitórias; apenas aceleram o deslocamento entre pontos de interesse.
+`npm test` verifica sobrevivência, crafting transacional, armas, desgaste e reparos, armazenamento regional, acampamentos, salvamento e campanhas normal e tranquila. Os percursos usam interações, ataques, movimento e esquivas da simulação; deslocamentos entre pontos de interesse são assistidos. Vida, dano, fôlego e inventário não são alterados para forçar vitórias.
 
-Foram verificados:
+Os testes verificam conectividade dos mapas, retorno a chefes e ingredientes pendentes, acampamento sem checkpoint, ciclo de 780 segundos, sono crítico, poção obrigatória, retomada do ácido após save/fuga/morte, três nós da fenda, sequência final e preservação dos registros de replay.
 
-- Conectividade dos dez mapas, incluindo recursos, caminhos opcionais, cavernas, arenas, ingredientes e nós da fenda.
-- Possibilidade de deixar chefe e ingrediente pendentes e voltar por viagem rápida antes do décimo bioma.
-- Separação dos baús, desgaste até quebra, reparos e preservação do equipamento no save.
-- Pausa, ciclo de 780 segundos e sono crítico após cerca de 3,5 ciclos.
-- Acampamento sem checkpoint ou salvamento manual.
-- Poção obrigatória e retomada do derretimento após save, fuga ou morte.
-- Três nós elétricos, fechamento da fenda e sequência final correta.
-- Compactação dos registros de replay e preservação das ações essenciais mesmo depois de muitas fabricações.
+## Interface e controles
 
-## Navegador
+`tests/browser.mjs` passou com 19 falas iniciais, movimento por teclado, coleta, fabricação pela interface, pausa, mapa, configurações, reload/save, gamepad pela API simulada do navegador e 25 entradas finais. O save final foi produzido pela campanha automatizada. O jogo encerrou na fala exata do Porteiro, sem botão ou notificação restante e sem erros JavaScript.
 
-`tests/browser.mjs` usa Chromium e Playwright. Verifica menu, 19 falas iniciais, movimento real pelo teclado, coleta, fabricação pela interface, pausa do tempo no inventário, mapa, configurações, reload/save, gamepad pela API padrão do navegador e as 25 entradas finais. A importação final usa um save produzido pelos combates reais da campanha automatizada. O teste exige ausência de erros JavaScript e termina sem botão ou notificação, na fala exata do Porteiro.
+`tests/mobile.mjs` passou com menu nativo simulado, movimento e ataque multitoque, interrupção ao soltar, carga e liberação do golpe, pausa/salvamento em segundo plano, rotação com retrato jogável e 24 avanços de botão até o encerramento. Teclado, mouse, gamepad e toque continuam alimentando a mesma simulação.
 
-A revisão visual verificou menu, gameplay, crafting, mapa, chefes e encerramento. As imagens ficam em `tests/artifacts/` e não entram no Git. `EXPORT_CAMPAIGN=1 npm test` recria o fixture usado no teste do navegador.
+## Artes e telas
 
-Esta validação automatizada cobre integração e conclusão; não substitui uma rodada extensa de playtest humano para ajuste fino de dificuldade e ritmo. Não foi usado um controle físico nesta sessão: o teste de gamepad simula a API do navegador.
+A arte foi redesenhada em módulos próprios: personagens, vinte chefes, sete armas, terrenos, árvores, estruturas, dez marcos, recursos, ingredientes, retratos, efeitos, fonte, marca e ícones. Dezesseis folhas PNG foram exportadas das mesmas rotinas usadas no jogo.
 
-## Correções encontradas durante a integração
+A matriz `tests/layout.mjs` cobre 12 formatos, de 320×568 a 2560×1080, com retrato, paisagem, quadrados, tablet e ultrawide. Verifica proporção/preenchimento do canvas, limites de painéis, rolagem interna, botões encobertos, interseções do HUD, controles, habilidades e notificações. Menus pausam a simulação. Abertura, mochila, fabricação, mapa, diário, pausa, configurações, controles, ponto de apoio, baú, viagem e habilidades são exercitados.
 
-O estado do ácido passou a persistir para evitar bloqueio irreversível no chefe final. Replays foram compactados para caber no armazenamento local e agora preservam os estados históricos da fenda, do poder e da dissolução. Recursos isolados foram convertidos em decoração. Telégrafos foram alinhados ao alcance real do dano; porcentagens de durabilidade, eventos de áudio, navegação de teclado e notificações finais foram corrigidos.
+`tests/render.mjs` passou em 288 verificações, com 92 imagens e 16 folhas PNG: dez biomas de dia/noite, marcos, vinte chefes, poses, quadros de movimento, NPCs, retratos, fenda sem corte, transparência dos atlas, cenas opacas, resize e mira. As imagens também foram inspecionadas; os fixtures visuais não representam vitórias de campanha.
 
-## Aplicativos offline e celular
+Nas batalhas em paisagem baixa, a câmera usa eixo lógico de 480 pixels, considera o espaço livre do HUD e enquadra os atores nas arenas próximas às bordas. O botão da poção permanece à direita, liberando o centro.
 
-Foram gerados um executável portátil Windows x64 e um APK Android universal. O aplicativo Electron abriu diretamente em `paradise://game/index.html`, com Canvas e interface carregados, sem servidor e sem exposição de Node.js à janela. O APK passou na verificação de assinatura v2/v3. Os arquivos de conteúdo incorporados foram comparados com a versão atual; Documento Mestre, saves e chaves não são distribuídos.
+## Aplicativos offline
 
-O teste `tests/mobile.mjs` simula um celular de 844 × 390 com toque e ponte nativa. Verifica que todos os botões iniciais cabem na tela, as 19 falas iniciais, movimento e ataque simultâneos com dois pontos de toque, interrupção do movimento ao soltar, carregamento e liberação do golpe, pausa e salvamento ao ir para segundo plano, rotação para retrato e avanço das cenas finais por toque. Não ocorreram erros JavaScript. A interface de PC foi testada novamente após as adaptações.
+O APK 1.1.0/code2 foi compilado com a mesma chave local da versão anterior e passou na verificação v2/v3. O conteúdo incorporado inclui os módulos e recursos finais; documentos, saves pessoais, ferramentas e chaves privadas são excluídos. O APK instala diretamente e não solicita permissão de internet.
 
-Os testes de interface móveis usam Chromium, não um celular físico. O executável Windows foi produzido em Linux e ainda precisa de teste de execução em Windows. Instalação, avisos de assinatura e comandos de geração estão em `docs/distribuicao.md`.
+O aplicativo Electron abriu em Linux por `paradise://game/index.html`, sem servidor, com marca, fonte, 19 falas, movimento e pausa. O modo Linux sem monitor não permite atestar fullscreen nativo.
 
-A tentativa adicional de instalar o APK em emulador Android 15 não concluiu: sem `/dev/kvm`, o sistema permaneceu na compilação inicial de componentes Google com `dex2oat` por vários minutos, bloqueando a instalação. O emulador foi encerrado. Não foi obtida confirmação de abertura do APK em Android nativo nesta sessão; a assinatura, estrutura, conteúdo e controles em navegador móvel foram verificados separadamente.
+O executável portátil foi compilado e **executado no runner Windows do GitHub Actions**. O teste abriu o aplicativo empacotado, carregou marca/fonte, percorreu 19 falas, moveu o jogador, pausou o tempo e alternou tela cheia. Node.js não ficou exposto ao conteúdo. Pipeline aprovado: [execução 36811488393](https://github.com/Girao-Henrique/Teste-1/actions/runs/36811488393).
+
+O APK instalou no Android virtual, mas o fluxo nativo não foi aprovado. O WebView falhou ao verificar seu snapshot interno do V8 antes de executar os módulos do jogo; dois controles sem conteúdo do jogo também não abriram. A execução em aparelho Android permanece pendente. O diagnóstico completo fica em [android-native-qa.md](android-native-qa.md). Instalação e comandos de geração estão em [distribuicao.md](distribuicao.md).
+
+## Limites práticos
+
+As verificações automatizadas cobrem integração e conclusão, mas não substituem playtest humano para dificuldade, ritmo e desempenho. Nenhum aparelho físico ou controle físico foi usado nesta sessão. A emulação Android por software não fornece uma medição confiável de fluidez ou bateria; testes em aparelhos reais continuam necessários para compatibilidade de fabricantes.

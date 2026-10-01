@@ -84,8 +84,10 @@ function validateButtons(items){
 
 const action=process.argv[2]||'status';
 if(action==='status'){
-  console.log(JSON.stringify({serial,bootCompleted:await adb(['shell','getprop','sys.boot_completed']),
-    bootAnimation:await adb(['shell','getprop','init.svc.bootanim']),android:await adb(['shell','getprop','ro.build.version.release'])}));
+  try{
+    console.log(JSON.stringify({serial,available:true,bootCompleted:await adb(['shell','getprop','sys.boot_completed']),
+      bootAnimation:await adb(['shell','getprop','init.svc.bootanim']),android:await adb(['shell','getprop','ro.build.version.release'])}));
+  }catch(error){console.log(JSON.stringify({serial,available:false,error:String(error.stderr||error.message).trim()}));process.exitCode=1;}
 }else if(action==='install'){
   assert.equal(await adb(['shell','getprop','sys.boot_completed']),'1','Aguarde o Android concluir o boot.');
   const apk=path.resolve(root,process.argv[3]||'builds/android/Paradise-Android.apk');await stat(apk);
