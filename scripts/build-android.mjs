@@ -6,6 +6,8 @@ import {randomBytes} from 'node:crypto';
 const root=resolve(import.meta.dirname,'..'),sdk=process.env.ANDROID_SDK_ROOT||join(root,'.cache/android-sdk');
 const tools=join(sdk,'build-tools/35.0.0'),jar=join(sdk,'platforms/android-35/android.jar');
 const dir=join(root,'builds/android'),src=join(root,'android/app/src/main');
+const version=JSON.parse(await readFile(join(root,'package.json'),'utf8')).version;
+const versionCode=JSON.parse(await readFile(join(root,'android/version.json'),'utf8')).versionCode;
 const javaHome=process.env.JAVA_HOME||(existsSync(join(root,'.cache/jdk21/bin/javac'))?join(root,'.cache/jdk21'):null);
 const env={...process.env,...(javaHome?{JAVA_HOME:javaHome,PATH:join(javaHome,'bin')+':'+process.env.PATH}:{}),ANDROID_USER_HOME:join(root,'.cache/android-user')};
 function run(bin,args,extra={}){const result=spawnSync(bin,args,{cwd:root,env:{...env,...extra},stdio:'inherit'});if(result.error)throw result.error;if(result.status)throw Error(`Falha em ${bin}: ${result.status}`);}
@@ -13,7 +15,7 @@ async function list(path,suffix){const files=[];for(const e of await readdir(pat
 if(!existsSync(jar)||!existsSync(tools))throw Error('SDK ausente. Instale platforms;android-35 e build-tools;35.0.0 no SDK indicado.');
 await mkdir(dir,{recursive:true});await rm(join(dir,'classes'),{recursive:true,force:true});await mkdir(join(dir,'classes'),{recursive:true});await mkdir(join(dir,'dex'),{recursive:true});await mkdir(join(dir,'generated'),{recursive:true});
 run(join(tools,'aapt2'),['compile','--dir',join(src,'res'),'-o',join(dir,'resources.zip')]);
-run(join(tools,'aapt2'),['link','-I',jar,'--manifest',join(src,'AndroidManifest.xml'),'--java',join(dir,'generated'),'-A',join(root,'www'),'--min-sdk-version','26','--target-sdk-version','35','--version-code','1','--version-name','1.0.0','-o',join(dir,'unsigned.apk'),join(dir,'resources.zip')]);
+run(join(tools,'aapt2'),['link','-I',jar,'--manifest',join(src,'AndroidManifest.xml'),'--java',join(dir,'generated'),'-A',join(root,'www'),'--min-sdk-version','26','--target-sdk-version','35','--version-code',String(versionCode),'--version-name',version,'-o',join(dir,'unsigned.apk'),join(dir,'resources.zip')]);
 run('javac',['--release','8','-encoding','UTF-8','-classpath',jar,'-d',join(dir,'classes'),...await list(join(src,'java'),'.java')]);
 run(join(tools,'d8'),['--lib',jar,'--min-api','26','--output',join(dir,'dex'),...await list(join(dir,'classes'),'.class')]);
 run('zip',['-j',join(dir,'unsigned.apk'),join(dir,'dex/classes.dex')]);

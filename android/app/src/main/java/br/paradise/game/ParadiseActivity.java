@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Build;
+import android.view.DisplayCutout;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
@@ -31,20 +33,40 @@ public final class ParadiseActivity extends Activity {
     private WebView webView;
     private ValueCallback<Uri[]> fileCallback;
     private String pendingExport;
+    private final int[] safeInsets = new int[4];
 
     @Override public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_FULLSCREEN);
         fullscreen();
+        if (Build.VERSION.SDK_INT >= 28) {
+            WindowManager.LayoutParams attributes = getWindow().getAttributes();
+            attributes.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+            getWindow().setAttributes(attributes);
+        }
         webView = new WebView(this);
+        webView.setOnApplyWindowInsetsListener((view, insets) -> {
+            if (Build.VERSION.SDK_INT >= 28) {
+                DisplayCutout cutout = insets.getDisplayCutout();
+                safeInsets[0] = cutout == null ? 0 : cutout.getSafeInsetTop();
+                safeInsets[1] = cutout == null ? 0 : cutout.getSafeInsetRight();
+                safeInsets[2] = cutout == null ? 0 : cutout.getSafeInsetBottom();
+                safeInsets[3] = cutout == null ? 0 : cutout.getSafeInsetLeft();
+                updateSafeInsets();
+            }
+            return insets;
+        });
         webView.setBackgroundColor(0xff142f2c);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setAllowFileAccess(false);
         webView.getSettings().setAllowContentAccess(true);
         webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
         webView.addJavascriptInterface(new NativeBridge(), "ParadiseNative");
         webView.setWebViewClient(new WebViewClient() {
+            @Override public void onPageFinished(WebView view, String url) { updateSafeInsets(); }
             @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 return !request.getUrl().toString().startsWith(ORIGIN);
             }
@@ -88,10 +110,22 @@ public final class ParadiseActivity extends Activity {
         if (path.endsWith(".json")) return "application/json";
         if (path.endsWith(".svg")) return "image/svg+xml";
         if (path.endsWith(".png")) return "image/png";
+        if (path.endsWith(".woff2")) return "font/woff2";
         return "application/octet-stream";
     }
     private static WebResourceResponse denied() {
         return new WebResourceResponse("text/plain", "UTF-8", 404, "Not Found", Collections.emptyMap(), new ByteArrayInputStream(new byte[0]));
+    }
+    private void updateSafeInsets() {
+        if (webView == null) return;
+        String[] sides = {"top", "right", "bottom", "left"};
+        float density = getResources().getDisplayMetrics().density;
+        StringBuilder script = new StringBuilder("if(document.documentElement){");
+        for (int i = 0; i < 4; i++) {
+            script.append("document.documentElement.style.setProperty('--native-safe-")
+                .append(sides[i]).append("','").append(Math.ceil(safeInsets[i] / density)).append("px');");
+        }
+        webView.evaluateJavascript(script.append("}").toString(), null);
     }
     private void fullscreen() {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_FULLSCREEN |

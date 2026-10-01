@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="br.paradise.game">
   <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
   <application android:label="Paradise?" android:icon="@drawable/icon" android:allowBackup="true" android:theme="@android:style/Theme.Material.NoActionBar" android:usesCleartextTraffic="false" android:enableOnBackInvokedCallback="false">
-    <activity android:name=".ParadiseActivity" android:exported="true" android:screenOrientation="landscape" android:configChanges="orientation|screenSize|keyboardHidden|screenLayout|smallestScreenSize|uiMode">
+    <activity android:name=".ParadiseActivity" android:exported="true" android:screenOrientation="fullSensor" android:configChanges="orientation|screenSize|keyboardHidden|screenLayout|smallestScreenSize|uiMode">
       <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
     </activity>
   </application>

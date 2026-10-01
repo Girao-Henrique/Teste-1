@@ -5,7 +5,12 @@ on:
       tag:
         description: Tag da release de teste previamente preparada
         required: true
-        default: v1.0.0-pre.1
+        default: v1.1.0-pre.1
+      publicar:
+        description: Publicar a release após o build; desative para manter em rascunho
+        type: boolean
+        required: true
+        default: true
 permissions:
   contents: write
 jobs:
@@ -14,6 +19,7 @@ jobs:
     timeout-minutes: 25
     env:
       RELEASE_TAG: ${{ inputs.tag }}
+      PUBLICAR_RELEASE: ${{ inputs.publicar }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,6 +36,8 @@ jobs:
           npm test
       - name: Gerar executável Windows
         run: npm run build:windows
+      - name: Abrir aplicativo Windows e testar interface nativa
+        run: npm run test:desktop
       - name: Conferir APK e gerar hashes
         shell: pwsh
         run: |
@@ -52,5 +60,9 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Prepare primeiro a release de destino.' }
           gh release upload $env:RELEASE_TAG builds/windows/Paradise-Windows-x64.exe distribution/android/Paradise-Android.apk builds/SHA256SUMS.txt --repo $env:GITHUB_REPOSITORY --clobber
           if ($LASTEXITCODE -ne 0) { throw 'Falha no envio dos aplicativos.' }
-          gh release edit $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --target $env:GITHUB_SHA --draft=false --prerelease
-          if ($LASTEXITCODE -ne 0) { throw 'Falha na publicação da release.' }
+          if ($env:PUBLICAR_RELEASE -eq 'true') {
+            gh release edit $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --target $env:GITHUB_SHA --draft=false --prerelease
+            if ($LASTEXITCODE -ne 0) { throw 'Falha na publicação da release.' }
+          } else {
+            Write-Output 'Aplicativos verificados e anexados ao rascunho da release.'
+          }

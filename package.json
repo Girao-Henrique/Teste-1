@@ -1,6 +1,6 @@
 {
   "name": "paradise",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,7 +11,10 @@
     "desktop": "npm run prepare:app && electron .",
     "build:windows": "npm run prepare:app && electron-builder --win portable --x64 --publish never",
     "build:android": "npm run prepare:app && node scripts/build-android.mjs",
-    "test:mobile": "node tests/mobile.mjs"
+    "test:mobile": "node tests/mobile.mjs",
+    "test:layout": "node tests/layout.mjs",
+    "test:render": "node tests/render.mjs",
+    "test:desktop": "node tests/desktop.mjs"
   },
   "devDependencies": {
     "electron": "44.5.1",

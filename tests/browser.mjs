@@ -56,7 +56,7 @@ await page.evaluate(()=>{window.testPad={axes:[0,0,0,0],buttons:Array.from({leng
 const beforePad=await page.evaluate(()=>window.paradise.state.player.x);
 await page.evaluate(()=>window.testPad.axes[0]=.8);await page.waitForTimeout(320);await page.evaluate(()=>window.testPad.axes[0]=0);
 assert((await page.evaluate(()=>window.paradise.state.player.x))>beforePad+10,'Analógico move o jogador');
-async function padPress(index){await page.evaluate(i=>window.testPad.buttons[i].pressed=true,index);await page.waitForTimeout(100);await page.evaluate(i=>window.testPad.buttons[i].pressed=false,index);await page.waitForTimeout(100);}
+async function padPress(index){await page.evaluate(i=>window.testPad.buttons[i].pressed=true,index);await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));await page.evaluate(i=>window.testPad.buttons[i].pressed=false,index);await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));}
 await padPress(9);assert.equal(await page.evaluate(()=>window.paradise.view),'pause');await padPress(0);assert.equal(await page.evaluate(()=>window.paradise.view),'playing');
 // Import the ending produced by the real, complete simulated campaign.
 assert(existsSync('tests/artifacts/campanha-final.json'),'Gere o fixture com EXPORT_CAMPAIGN=1 npm test');

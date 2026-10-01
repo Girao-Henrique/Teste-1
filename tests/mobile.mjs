@@ -39,8 +39,10 @@ try {
  assert(await page.evaluate(()=>!!localStorage.getItem('paradise.campanha.v1')),'Salvar ao ir para segundo plano');
  await page.getByRole('button',{name:'Continuar jornada',exact:true}).tap();
  await page.setViewportSize({width:390,height:844});await page.waitForTimeout(150);
- assert(await page.locator('#rotate-notice').isVisible());assert.equal(await page.evaluate(()=>window.paradise.view),'pause');
- await page.setViewportSize({width:844,height:390});await page.getByRole('button',{name:'Continuar jornada',exact:true}).tap();
+ assert(!(await page.locator('#rotate-notice').isVisible()));assert.equal(await page.evaluate(()=>window.paradise.view),'playing');
+ assert(await page.locator('.touch-joystick').isVisible(),'O retrato também permite jogar');
+ await page.screenshot({path:'tests/artifacts/mobile-retrato.png'});
+ await page.setViewportSize({width:844,height:390});
  await page.locator('#import-save').setInputFiles('tests/artifacts/campanha-final.json');await page.waitForFunction(()=>window.paradise.view==='ending');
  let scenes=0;while(await page.locator('.ending-screen button').count()){await page.locator('.ending-screen button').tap();assert(++scenes<30);}
  assert.equal(await page.locator('.ending-screen p').innerText(),'SEJA BEM-VINDO AO PARAÍSO!');assert.equal(errors.length,0,errors.join('\n'));

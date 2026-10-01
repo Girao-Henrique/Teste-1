@@ -1,3 +1,5 @@
+import {icon} from './icons.js';
+
 /** Controles locais de toque; teclado, mouse e gamepad continuam disponíveis. */
 export class TouchControls {
   constructor(container) {
@@ -11,16 +13,16 @@ export class TouchControls {
     this.visible = false;
     document.documentElement.classList.toggle('is-touch', this.enabled);
     container.innerHTML = `<div id="touch-controls" class="touch-controls hidden" aria-label="Controles por toque">
-      <div class="touch-joystick" role="group" aria-label="Direcional virtual"><span class="joystick-cross">✦</span><div class="joystick-knob"></div></div>
+      <div class="touch-joystick" role="group" aria-label="Direcional virtual"><span class="joystick-cross">${icon('compass')}</span><div class="joystick-knob"></div></div>
       <div class="touch-combat">
-        <button class="touch-button touch-attack" data-touch="attack" aria-label="Atacar">Atacar</button>
-        <button class="touch-button touch-dodge" data-touch="dodge" aria-label="Esquivar">Esquiva</button>
-        <button class="touch-button touch-interact" data-touch="interact" aria-label="Interagir e coletar">Interagir</button>
-        <button class="touch-button touch-strong" data-touch="strong" aria-label="Segurar para carregar golpe">Carregar</button>
-        <button class="touch-button touch-sprint" data-touch="sprint" aria-label="Alternar corrida" aria-pressed="false">Correr</button>
-        <button class="touch-button touch-target" data-touch="cycleTarget" aria-label="Alternar alvo">Alvo</button>
+        <button class="touch-button touch-attack" data-touch="attack" aria-label="Atacar">${icon('sword')}<span>Atacar</span></button>
+        <button class="touch-button touch-dodge" data-touch="dodge" aria-label="Esquivar">${icon('dodge')}<span>Esquiva</span></button>
+        <button class="touch-button touch-interact" data-touch="interact" aria-label="Interagir e coletar">${icon('hand')}<span>Interagir</span></button>
+        <button class="touch-button touch-strong" data-touch="strong" aria-label="Segurar para carregar golpe">${icon('charge')}<span>Carregar</span></button>
+        <button class="touch-button touch-sprint" data-touch="sprint" aria-label="Alternar corrida" aria-pressed="false">${icon('sprint')}<span>Correr</span></button>
+        <button class="touch-button touch-target" data-touch="cycleTarget" aria-label="Alternar alvo">${icon('target')}<span>Alvo</span></button>
       </div>
-      <div class="touch-specials"><button class="touch-button" data-touch="potion" hidden>Poção ácida</button><button class="touch-button" data-touch="electric" hidden>Campo elétrico</button></div>
+      <div class="touch-specials"><button class="touch-button" data-touch="potion" hidden>${icon('acid')}<span>Poção ácida</span></button><button class="touch-button" data-touch="electric" hidden>${icon('electric')}<span>Campo elétrico</span></button></div>
     </div>`;
     this.element = container.firstElementChild;
     this.joystick = this.element.querySelector('.touch-joystick');
@@ -73,7 +75,7 @@ export class TouchControls {
       const before = this.portrait;
       this.portrait = this.enabled && innerHeight > innerWidth;
       document.documentElement.classList.toggle('touch-portrait', this.portrait);
-      if (this.portrait && !before) { this.reset(); window.dispatchEvent(new Event('paradise-pause')); }
+      if (this.portrait !== before) this.reset();
     };
     addEventListener('resize', this.layout); this.layout();
   }
@@ -85,7 +87,7 @@ export class TouchControls {
     this.element?.querySelector('[data-touch="sprint"]')?.setAttribute('aria-pressed', 'false');
   }
   update(state, view, started) {
-    const visible = this.enabled && started && !view && !this.portrait && state.phase !== 'finished';
+    const visible = this.enabled && started && !view && state.phase !== 'finished';
     if (this.visible && !visible) this.reset();
     this.visible = visible; this.element.classList.toggle('hidden', !visible);
     this.element.querySelector('[data-touch="potion"]').hidden = state.boss?.id !== 19 || !(state.inventory.acid > 0);

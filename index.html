@@ -1,25 +1,62 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"><meta name="theme-color" content="#142f2c"><meta name="description" content="Paradise? — uma aventura de exploração, sobrevivência e fantasia em pixel art."><title>Paradise?</title><link rel="icon" type="image/svg+xml" href="assets/interface/favicon.svg"><link rel="stylesheet" href="styles.css"></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#122e35">
+  <meta name="description" content="Paradise? — uma aventura de exploração, sobrevivência e fantasia em pixel art.">
+  <title>Paradise?</title>
+  <link rel="icon" type="image/svg+xml" href="assets/interface/favicon.svg">
+  <link rel="preload" href="assets/interface/paradise.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<main id="game" aria-label="Paradise?" class="viewport">
-<canvas id="world" width="640" height="360" aria-label="Mundo de Paradise?"></canvas>
-<div id="hud" class="hud hidden">
-<section class="vitals"><div class="vitals-title"><span class="star">✦</span><span>VIAJANTE</span><span id="health-number">100 / 100</span></div><div class="health-track"><div id="health-fill"></div></div><div class="needs"><div title="Fome"><span>♧</span><label>FOME</label><progress id="hunger" max="100" value="100"></progress></div><div title="Sede"><span>◇</span><label>SEDE</label><progress id="thirst" max="100" value="100"></progress></div><div title="Sono"><span>☾</span><label>SONO</label><progress id="sleep" max="100" value="100"></progress></div></div><div class="stamina-track"><span>FÔLEGO</span><progress id="stamina" max="100" value="100"></progress></div></section>
-<div class="place"><span id="region-counter">REGIÃO I</span><h1 id="biome-name">Jardins Celestes</h1><span id="biome-subtitle">Onde tudo floresce</span></div>
-<section class="corner"><div class="clock"><span id="day-icon">☀</span><div><b id="clock-time">08:00</b><small id="day-number">DIA 1</small></div></div><div class="hud-actions"><button data-action="map" title="Mapa [M]" aria-label="Abrir mapa">⌘</button><button data-action="inventory" title="Inventário [I]" aria-label="Abrir inventário">▤</button><button data-action="pause" title="Pausa [Esc]" aria-label="Pausar">Ⅱ</button></div><small id="save-indicator"></small></section>
-<div id="boss-hud" class="boss-hud hidden"><small>GRANDE INVASOR</small><b id="boss-name"></b><div class="boss-track"><div id="boss-fill"></div></div></div>
-<div id="interact-hint" class="interact-hint hidden"><kbd>E</kbd><span>Interagir</span></div>
-<div class="bottom-hud"><div class="weapon-info"><span class="weapon-icon">⚔</span><div><b id="weapon-name">Espada</b><small id="weapon-durability"></small></div><span class="key-badge">J</span></div><div class="quickbar"><button data-action="eat" title="Comer fruta [1]"><small>1</small><span>●</span><b id="fruit-count">0</b><label>Fruta</label></button><button data-action="drink" title="Beber água [2]"><small>2</small><span>◈</span><b id="water-count">0</b><label>Água</label></button><button data-action="heal" title="Usar bálsamo [3]"><small>3</small><span>✚</span><b id="heal-count">0</b><label>Bálsamo</label></button><button data-action="camp" title="Armar acampamento [4]"><small>4</small><span>△</span><b id="camp-count">0</b><label>Acampar</label></button></div><button class="journal-shortcut" data-action="journal"><span>✧</span><div><small>SEU CAMINHO</small><b id="objective-short">Conheça este novo mundo</b></div></button></div>
-<div class="controls-hint">WASD mover <span>·</span> J atacar <span>·</span> F carregar <span>·</span> Espaço esquivar <span>·</span> Shift correr</div>
-</div>
-<div id="touch-layer"></div>
-<div id="toasts" class="toasts" aria-live="polite"></div>
-<div id="memory" class="memory hidden"><span></span></div>
-<div id="overlay" class="overlay"></div>
-<div class="screen-border"></div>
+<main id="game" class="viewport" aria-label="Paradise?">
+  <canvas id="world" width="640" height="360" aria-label="Mundo de Paradise?"></canvas>
+  <div id="hud" class="hud hidden">
+    <div class="hud-top">
+      <section class="vitals" aria-label="Condição do viajante">
+        <div class="vitals-title"><span class="traveler-mark" aria-hidden="true"></span><span>VIAJANTE</span><span id="health-number">100 / 100</span></div>
+        <div class="health-track" aria-label="Saúde"><div id="health-fill"></div></div>
+        <div class="needs">
+          <div title="Fome"><span class="need-icon need-hunger" aria-hidden="true"></span><label for="hunger">FOME</label><progress id="hunger" max="100" value="100"></progress></div>
+          <div title="Sede"><span class="need-icon need-thirst" aria-hidden="true"></span><label for="thirst">SEDE</label><progress id="thirst" max="100" value="100"></progress></div>
+          <div title="Sono"><span class="need-icon need-sleep" aria-hidden="true"></span><label for="sleep">SONO</label><progress id="sleep" max="100" value="100"></progress></div>
+        </div>
+        <div class="stamina-track"><label for="stamina">FÔLEGO</label><progress id="stamina" max="100" value="100"></progress></div>
+      </section>
+      <div class="place"><span id="region-counter">REGIÃO I</span><h1 id="biome-name">Jardins Celestes</h1><span id="biome-subtitle">Onde tudo floresce</span><div id="boss-hud" class="boss-hud hidden"><small>GRANDE INVASOR</small><b id="boss-name"></b><div class="boss-track"><div id="boss-fill"></div></div></div></div>
+      <section class="corner" aria-label="Tempo e atalhos">
+        <div class="clock"><span id="day-icon" aria-hidden="true"></span><div><b id="clock-time">08:00</b><small id="day-number">DIA 1</small></div></div>
+        <div class="hud-actions">
+          <button data-action="map" title="Mapa [M]" aria-label="Abrir mapa"><span class="fallback-map" aria-hidden="true"></span></button>
+          <button data-action="inventory" title="Inventário [I]" aria-label="Abrir inventário"><span class="fallback-bag" aria-hidden="true"></span></button>
+          <button data-action="pause" title="Pausa [Esc]" aria-label="Pausar"><span class="fallback-pause" aria-hidden="true"></span></button>
+        </div>
+        <small id="save-indicator" aria-live="polite"></small>
+      </section>
+    </div>
+    <div id="interact-hint" class="interact-hint hidden"><kbd>E</kbd><span>Interagir</span></div>
+    <div class="bottom-hud">
+      <div class="weapon-info"><span class="weapon-icon" aria-hidden="true"></span><div><b id="weapon-name">Espada</b><small id="weapon-durability"></small></div><span class="key-badge">J</span></div>
+      <div class="quickbar" aria-label="Provisões">
+        <button data-action="eat" title="Comer fruta [1]" aria-label="Comer fruta"><small>1</small><span aria-hidden="true"></span><b id="fruit-count">0</b><label>Fruta</label></button>
+        <button data-action="drink" title="Beber água [2]" aria-label="Beber água"><small>2</small><span aria-hidden="true"></span><b id="water-count">0</b><label>Água</label></button>
+        <button data-action="heal" title="Usar bálsamo [3]" aria-label="Usar bálsamo"><small>3</small><span aria-hidden="true"></span><b id="heal-count">0</b><label>Bálsamo</label></button>
+        <button data-action="camp" title="Armar acampamento [4]" aria-label="Armar acampamento"><small>4</small><span aria-hidden="true"></span><b id="camp-count">0</b><label>Acampar</label></button>
+      </div>
+      <button class="journal-shortcut" data-action="journal" aria-label="Abrir diário da jornada"><span class="journal-mark" aria-hidden="true"></span><div><small>SEU CAMINHO</small><b id="objective-short">Conheça este novo mundo</b></div></button>
+    </div>
+    <div class="controls-hint"><kbd>WASD</kbd> mover <i></i><kbd>J</kbd> atacar <i></i><kbd>F</kbd> carregar <i></i><kbd>Espaço</kbd> esquivar <i></i><kbd>Shift</kbd> correr</div>
+  </div>
+  <div id="touch-layer"></div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <div id="memory" class="memory hidden"><span></span></div>
+  <div id="overlay" class="overlay"></div>
+  <div class="screen-border" aria-hidden="true"></div>
 </main>
-<div id="rotate-notice" class="rotate-notice" role="status"><span>↻</span><h2>Vire o celular</h2><p>Paradise? é jogado com a tela na horizontal.</p></div>
+<div id="rotate-notice" class="rotate-notice" role="status" hidden></div>
 <input type="file" id="import-save" accept="application/json,.json" hidden>
 <script type="module" src="src/main.js"></script>
-</body></html>
+</body>
+</html>

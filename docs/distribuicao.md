@@ -3,7 +3,7 @@
 ## Arquivos para jogar
 
 - `builds/windows/Paradise-Windows-x64.exe`: executável portátil para Windows 10/11 de 64 bits. Baixe e abra; não precisa de Node.js, servidor nem navegador instalado. Os arquivos do jogo são incorporados ao aplicativo.
-- `builds/android/Paradise-Android.apk`: APK universal para Android 8 ou superior. Transfira para o celular, abra e autorize a instalação pelo aplicativo usado para abrir o arquivo. Requer Android System WebView 109 ou superior; mantenha esse componente atualizado pela Play Store. O jogo usa a tela na horizontal.
+- `builds/android/Paradise-Android.apk`: APK universal para Android 8 ou superior. Transfira para o celular, abra e autorize a instalação pelo aplicativo usado para abrir o arquivo. Requer Android System WebView 109 ou superior; mantenha esse componente atualizado pela Play Store. O jogo aceita retrato e paisagem, com controles reorganizados e respeito à área segura da tela.
 
 Ambos funcionam offline. O APK não solicita permissão de internet nem acesso amplo ao armazenamento. A seleção de backups usa o seletor de arquivos do sistema.
 
@@ -35,7 +35,7 @@ npm run build:android
 
 A compilação usa `aapt2`, `javac`, `d8`, `zipalign` e `apksigner`, sem dependência de Gradle. O APK contém o mesmo jogo e uma Activity Android com WebView que serve exclusivamente os arquivos incorporados.
 
-Preserve `android/signing/paradise.p12` e `android/signing/local.json` em um backup privado: são necessários para assinar atualizações que mantenham a instalação e os dados. Esses arquivos são ignorados pelo Git e não entram no APK. Aumente o `version-code` no script antes de distribuir uma atualização Android.
+Preserve `android/signing/paradise.p12` e `android/signing/local.json` em um backup privado: são necessários para assinar atualizações que mantenham a instalação e os dados. Esses arquivos são ignorados pelo Git e não entram no APK. Aumente `versionCode` em `android/version.json` e a versão em `package.json` antes de distribuir uma atualização Android.
 
 ## Validação
 
@@ -47,4 +47,4 @@ A instalação no emulador desta nuvem não concluiu devido à inicialização s
 
 ## Publicação pelo GitHub Actions
 
-O workflow manual `Publicar aplicativos Paradise?` gera o executável em Windows e publica os anexos de uma release de teste já preparada. O APK assinado fica em `distribution/android/`; sua chave não entra no repositório. O workflow confere o hash antes de enviar e mantém a release como prévia. Atualizações Android exigem substituir o APK e seu hash após compilação com a mesma chave local.
+O workflow manual `Publicar aplicativos Paradise?` gera o executável em Windows e publica os anexos de uma release de teste já preparada. O APK assinado fica em `distribution/android/`; sua chave não entra no repositório. O workflow confere o hash antes de enviar e mantém a release como prévia. A opção `publicar=false` anexa os arquivos mantendo o rascunho enquanto terminam as demais validações; depois a release pode ser publicada pelo GitHub. Atualizações Android exigem substituir o APK e seu hash após compilação com a mesma chave local.

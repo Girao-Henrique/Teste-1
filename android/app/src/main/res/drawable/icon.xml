@@ -1,5 +1,16 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="16" android:viewportHeight="16">
- <path android:fillColor="#214d3a" android:pathData="M0,0H16V16H0Z"/>
- <path android:fillColor="#e9d18b" android:pathData="M7,2H9V5H12V7H15V9H12V11H9V14H7V11H4V9H1V7H4V5H7Z"/>
- <path android:fillColor="#fff5d3" android:pathData="M7,5H9V7H11V9H9V11H7V9H5V7H7Z"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Emblema original compartilhado com assets/interface/favicon.svg. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#285958" android:pathData="M0,0H108V108H0Z" />
+    <!-- Área segura: símbolo de 72px centralizado, com 18px de margem. -->
+    <group android:translateX="18" android:translateY="18"
+        android:scaleX="2.25" android:scaleY="2.25">
+        <path android:fillColor="#253c4b" android:pathData="M4,0h24v4h4v24h-4v4H4v-4H0V4h4z" />
+        <path android:fillColor="#438e7d" android:pathData="M5,3h22v2h2v22h-2v2H5v-2H3V5h2z" />
+        <path android:fillColor="#eac079" android:pathData="M7,26V12h2V8h3V6h8v2h3v4h2v14h-3V13h-2V10h-8v3h-2v13z" />
+        <path android:fillColor="#fff1cd" android:pathData="M15,11h2v5h5v2h-5v5h-2v-5h-5v-2h5z" />
+        <path android:fillColor="#9bd3af" android:pathData="M4,21h3v3h4v2H6v-2H4zM28,21h-3v3h-4v2h5v-2h2z" />
+    </group>
 </vector>

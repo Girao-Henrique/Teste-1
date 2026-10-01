@@ -19,8 +19,8 @@ Tiles 0 relva,1 caminho,2 água,3 paredão,4 ponte,5 piso. isWalkable(world,x,y,
 Objetos {id,type,x,y,...}; tipos tree,flower,rock,bush,resource,ruin,crystal,waterfall,bridge,camp,support. Recursos usam resource:string e quantity.
 Suporte/spawn perto de {160,576}; chefe 1 {768,256}, chefe 2 {1344,576}; saída {1490,576}; ingrediente {1040,944}; segredo {416,256}.
 
-## Render (`src/render/renderer.js`)
-export class Renderer constructor(canvas); draw(state,world,time=0); camera={x,y}; screenToWorld(x,y)->{x,y} com x/y nas coordenadas internas do canvas. Base 640x360; nearest neighbor; desenho pixelado próprio, animações por tempo/estado.
+## Render (`src/render/`)
+export class Renderer constructor(canvas); draw(state,world,time=0); camera={x,y}; screenToWorld(x,y)->{x,y} com x/y nas coordenadas internas do canvas. resize(largura,altura) acompanha a proporção disponível com eixo curto lógico de 360 px, limitado a 2048 px no eixo longo; nearest neighbor; desenho pixelado próprio, animações por tempo/estado. Câmera de combate considera os limites reais do HUD e dos controles de toque; em paisagem com altura CSS<=420px, o eixo curto lógico de combate é 480 px para enquadrar os dois atores.
 Estado player {x,y,hp,maxHp,stamina,maxStamina,facing:{x,y},moving,attackTimer,dodgeTimer,weapon,invulnerable}; enemies [{id,x,y,hp,maxHp,type,telegraph,angle,...}]; boss {id,x,y,hp,maxHp,telegraph,angle,phase,...}|null; projectiles [{x,y,vx,vy,owner,...}]; particles [{x,y,life,...}]. Draw pode tratar campos ausentes com defaults. Jogador/NPCs/chefes/sprites vegetação distintos.
 
 ## Engine (`src/game/engine.js`)
@@ -36,6 +36,6 @@ Root cuida de index.html, styles.css, src/main.js, src/ui/*, persistência em lo
 
 ## Aplicativos nativos
 
-O mesmo conteúdo de `src/` e `assets/` é copiado para `www/` por `scripts/prepare-app.mjs`. Electron serve esses recursos por um protocolo local seguro, com isolamento de contexto e preload limitado a sair e exportar save. Android serve os recursos de `assets/` a um WebView sob origem HTTPS local interceptada, sem permissão de rede. Nenhum dos aplicativos inicia servidor HTTP.
+O mesmo conteúdo de `src/` e `assets/` é copiado para `www/` por `scripts/prepare-app.mjs`. Electron serve esses recursos por um protocolo local seguro, com isolamento de contexto e preload limitado a tela cheia, sair e exportar save. Android serve os recursos de `assets/` a um WebView sob origem HTTPS local interceptada, sem permissão de rede. Nenhum dos aplicativos inicia servidor HTTP.
 
-`TouchControls` agrega direcional, ações mantidas e pulsos por pointer events, com captura independente para multitoque. A entrada final combina toque, teclado e gamepad. Abrir painel zera ações e carga; passar para segundo plano ou retrato pausa a simulação. A ponte Android oferece o seletor nativo de importação/exportação. Saves mantêm o formato versão 1 e são intercambiáveis entre os aplicativos.
+`TouchControls` agrega direcional, ações mantidas e pulsos por pointer events, com captura independente para multitoque. A entrada final combina toque, teclado e gamepad. Abrir painel zera ações e carga; passar para segundo plano pausa a simulação; retrato e paisagem permanecem jogáveis. A ponte Android oferece o seletor nativo de importação/exportação. Saves mantêm o formato versão 1 e são intercambiáveis entre os aplicativos.

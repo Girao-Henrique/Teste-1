@@ -6,7 +6,7 @@ Todo o texto visível no jogo e toda comunicação com o usuário devem usar pt-
 
 Trabalhe somente nesta pasta e em seus subdiretórios. Não publique o jogo ou envie mensagens externas sem autorização pertinente.
 
-Arquitetura: Canvas 2D + ES modules, execução local sem dependências. Contratos em `docs/arquitetura.md`, implementação em `src/`, arte em `assets/`, testes em `tests/`. PNGs exportados têm fonte editável no renderer; catálogo em `assets/sprites/catalogo.json`.
+Arquitetura: Canvas 2D + ES modules, execução local sem dependências. Contratos em `docs/arquitetura.md`, implementação em `src/`, arte em `assets/`, testes em `tests/`. PNGs exportados têm fontes editáveis em src/render/ e exportação pelo renderer; catálogo em `assets/sprites/catalogo.json`.
 
 Comandos:
 

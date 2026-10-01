@@ -1,23 +1,231 @@
 {
   "titulo": "Paradise? — arte original em pixels",
   "autoria": "Desenhos criados para o projeto em coordenadas inteiras; sem imagens filtradas.",
-  "fonte": "src/render/renderer.js",
+  "fonte": [
+    "src/render/character-art.js",
+    "src/render/environment-art.js",
+    "src/render/effects-art.js",
+    "src/render/portrait-art.js"
+  ],
   "exportacao": "Renderer.exportSheets() retorna caminhos e PNGs sem perda ou suavização.",
-  "escala": "1 pixel de arte = 1 pixel no canvas 640 × 360; ampliar por vizinho mais próximo.",
+  "escala": "Desenho em pixels inteiros; eixo curto lógico de 360 pixels com proporção adaptativa; ampliar por vizinho mais próximo.",
   "folhas": {
-    "assets/animations/jogador-movimento.png": { "celula": [48, 56], "colunas": 4, "linhas": ["baixo", "esquerda", "direita", "cima"], "quadros": 4 },
-    "assets/animations/jogador-combate.png": { "celula": [96, 96], "colunas": 5, "linhas": ["espada", "machado", "lança", "martelo", "adagas", "arco", "besta"] },
-    "assets/sprites/porteiro-e-guia.png": { "celula": [80, 80], "colunas": ["Porteiro", "Guia"] },
-    "assets/animations/invasores.png": { "celula": [64, 64], "colunas": 4, "linhas": ["ágil", "distância", "pesado", "elite"] },
-    "assets/sprites/vinte-chefes.png": { "celula": [128, 112], "colunas": 5, "ordem": "Chefes 1 a 20, da esquerda para a direita, de cima para baixo." },
-    "assets/animations/chefe-movimento.png": { "celula": [128, 112], "colunas": 4, "linhas": "Chefes 1 a 20" },
-    "assets/sprites/vegetacao.png": { "celula": [72, 86], "colunas": ["frutífera", "copa larga", "antiga", "arredondada", "palmeira", "conífera", "prateada"], "linhas": "Biomas 1 a 10" },
-    "assets/sprites/marcos-das-regioes.png": { "celula": [160, 160], "colunas": 5, "ordem": "Marcos exclusivos dos biomas 1 a 10" },
-    "assets/tilesets/terrenos-dez-regioes.png": { "celula": [16, 16], "colunas": "4 variantes de cada tipo: relva, caminho, água, paredão, ponte, piso.", "linhas": "Biomas 1 a 10" },
-    "assets/tilesets/paletas.png": { "celula": [16, 16], "colunas": ["relva", "relva clara", "relva escura", "caminho", "água", "água clara", "copa", "tronco", "destaque", "céu", "contorno"], "linhas": "Biomas 1 a 10" },
-    "assets/sprites/estruturas.png": { "celula": [80, 96], "colunas": 6, "ordem": ["portal inicial", "arco", "caverna", "coluna", "pedestal", "observatório", "fonte", "suporte", "acampamento"] },
-    "assets/sprites/recursos.png": { "celula": [32, 32], "ordem": ["madeira", "pedra", "fibra", "fruta", "água", "erva", "minério", "cristal", "essência"] },
-    "assets/effects/luz-e-fenda.png": { "celula": [96, 112], "colunas": 5, "linhas": ["ingrediente regional", "fenda luminosa"] }
+    "assets/animations/jogador-movimento.png": {
+      "celula": [
+        64,
+        64
+      ],
+      "colunas": 4,
+      "linhas": [
+        "baixo",
+        "esquerda",
+        "direita",
+        "cima"
+      ],
+      "quadros": 4
+    },
+    "assets/animations/jogador-combate.png": {
+      "celula": [
+        144,
+        112
+      ],
+      "colunas": 5,
+      "linhas": [
+        "espada",
+        "machado",
+        "lança",
+        "martelo",
+        "adagas",
+        "arco",
+        "besta"
+      ]
+    },
+    "assets/sprites/porteiro-e-guia.png": {
+      "celula": [
+        80,
+        80
+      ],
+      "colunas": [
+        "Porteiro",
+        "Guia"
+      ]
+    },
+    "assets/animations/invasores.png": {
+      "celula": [
+        64,
+        64
+      ],
+      "colunas": 4,
+      "linhas": [
+        "ágil",
+        "distância",
+        "pesado",
+        "elite"
+      ]
+    },
+    "assets/sprites/vinte-chefes.png": {
+      "celula": [
+        128,
+        112
+      ],
+      "colunas": 5,
+      "ordem": "Chefes 1 a 20, da esquerda para a direita, de cima para baixo."
+    },
+    "assets/animations/chefe-movimento.png": {
+      "celula": [
+        128,
+        112
+      ],
+      "colunas": 4,
+      "linhas": "Chefes 1 a 20"
+    },
+    "assets/sprites/vegetacao.png": {
+      "celula": [
+        72,
+        86
+      ],
+      "colunas": [
+        "frutífera",
+        "copa larga",
+        "antiga",
+        "arredondada",
+        "palmeira",
+        "conífera",
+        "prateada"
+      ],
+      "linhas": "Biomas 1 a 10"
+    },
+    "assets/sprites/marcos-das-regioes.png": {
+      "celula": [
+        160,
+        160
+      ],
+      "colunas": 5,
+      "ordem": "Marcos exclusivos dos biomas 1 a 10"
+    },
+    "assets/tilesets/terrenos-dez-regioes.png": {
+      "celula": [
+        16,
+        16
+      ],
+      "colunas": "4 variantes de cada tipo: relva, caminho, água, paredão, ponte, piso.",
+      "linhas": "Biomas 1 a 10"
+    },
+    "assets/tilesets/paletas.png": {
+      "celula": [
+        16,
+        16
+      ],
+      "colunas": [
+        "relva",
+        "relva clara",
+        "relva escura",
+        "caminho",
+        "água",
+        "água clara",
+        "copa",
+        "tronco",
+        "destaque",
+        "céu",
+        "contorno"
+      ],
+      "linhas": "Biomas 1 a 10"
+    },
+    "assets/sprites/estruturas.png": {
+      "celula": [
+        80,
+        96
+      ],
+      "colunas": 6,
+      "ordem": [
+        "portal inicial",
+        "arco",
+        "caverna",
+        "coluna",
+        "pedestal",
+        "observatório",
+        "fonte",
+        "suporte",
+        "acampamento"
+      ]
+    },
+    "assets/sprites/recursos.png": {
+      "celula": [
+        32,
+        32
+      ],
+      "ordem": [
+        "madeira",
+        "pedra",
+        "fibra",
+        "fruta",
+        "água",
+        "erva",
+        "minério",
+        "cristal",
+        "essência"
+      ]
+    },
+    "assets/effects/luz-e-fenda.png": {
+      "celula": [
+        160,
+        160
+      ],
+      "colunas": 5,
+      "linhas": [
+        "ingrediente regional",
+        "fenda luminosa"
+      ]
+    },
+    "assets/sprites/ingredientes-regionais.png": {
+      "celula": [
+        48,
+        48
+      ],
+      "colunas": 9,
+      "ordem": "Ingredientes dos biomas 1 a 9, conforme BIOMES[].ingredient."
+    },
+    "assets/animations/porteiro-e-guia.png": {
+      "celula": [
+        80,
+        80
+      ],
+      "colunas": 4,
+      "linhas": [
+        "Porteiro",
+        "Guia"
+      ]
+    },
+    "assets/animations/retratos.png": {
+      "celula": [
+        96,
+        96
+      ],
+      "colunas": 4,
+      "linhas": [
+        "Viajante",
+        "Porteiro",
+        "Guia"
+      ]
+    }
   },
-  "animacoes_em_execucao": ["Movimento com quatro poses e quatro direções", "Lenço e cabelos expressivos", "Esquiva com três ecos discretos", "Golpes por categoria de arma", "Preparação de ataque forte", "Respiração dos NPCs", "Asas, caudas, tentáculos e flutuação dos chefes", "Reação a dano", "Telégrafos no chão", "Dissolução de pétalas pela poção ácida", "Água e peixes", "Brisa nas flores", "Cascatas", "Centelhas elétricas", "Focos e fechamento da fenda", "Pétalas e vagalumes"]
+  "animacoes_em_execucao": [
+    "Movimento e armas em oito direções",
+    "Capa, cabelos e bússola expressivos",
+    "Esquiva com ecos discretos",
+    "Sete categorias de armas",
+    "Preparação e impacto do ataque forte",
+    "Respiração e piscadas dos NPCs e retratos",
+    "Vinte chefes com anatomias e poses distintas",
+    "Reação a dano e queda",
+    "Telégrafos alinhados ao dano real",
+    "Dissolução de pétalas pela poção ácida",
+    "Água e peixes",
+    "Brisa nas flores e copas",
+    "Cascatas",
+    "Centelhas elétricas",
+    "Focos e fechamento da fenda",
+    "Pétalas e vagalumes",
+    "Transições, foco e resposta dos menus e botões"
+  ]
 }

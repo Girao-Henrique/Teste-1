@@ -6,14 +6,20 @@ O documento de referência é [Paradise_Documento_Mestre_2D_Pixel_Art.pdf](Parad
 
 ## Aplicativos para jogar
 
-Baixe os aplicativos na [release para PC e Android](https://github.com/Girao-Henrique/Teste-1/releases/tag/v1.0.0-pre.1):
+Baixe os aplicativos na [release para PC e Android](https://github.com/Girao-Henrique/Teste-1/releases/tag/v1.1.0-pre.1):
 
-- [Windows 64 bits — executável portátil](https://github.com/Girao-Henrique/Teste-1/releases/download/v1.0.0-pre.1/Paradise-Windows-x64.exe).
-- [Android 8+ — APK](https://github.com/Girao-Henrique/Teste-1/releases/download/v1.0.0-pre.1/Paradise-Android.apk).
+- [Windows 64 bits — executável portátil](https://github.com/Girao-Henrique/Teste-1/releases/download/v1.1.0-pre.1/Paradise-Windows-x64.exe).
+- [Android 8+ — APK](https://github.com/Girao-Henrique/Teste-1/releases/download/v1.1.0-pre.1/Paradise-Android.apk).
 
-Esta é uma versão para testes. As campanhas e interfaces foram verificadas; a execução em Windows e Android nativo ainda precisa de confirmação. O Android requer Android System WebView atualizado. Detalhes em [validação](docs/validacao.md).
+Esta é a atualização visual 1.1.0, distribuída como versão de testes. A campanha, os menus e os layouts adaptativos foram verificados. O Android requer Android System WebView atualizado. Consulte os testes e limites em [validação](docs/validacao.md).
 
-O executável Windows está em `builds/windows/Paradise-Windows-x64.exe`; o APK Android está em `builds/android/Paradise-Android.apk`. Ambos incorporam o jogo e funcionam offline, sem endereço localhost. Consulte [instalação e geração de versões](docs/distribuicao.md). No celular, use a tela horizontal e os controles de toque.
+O executável Windows está em `builds/windows/Paradise-Windows-x64.exe`; o APK Android está em `builds/android/Paradise-Android.apk`. Ambos incorporam o jogo e funcionam offline, sem endereço localhost. Consulte [instalação e geração de versões](docs/distribuicao.md). No celular, retrato e paisagem são jogáveis com controles de toque. A tela cheia acompanha o formato da tela.
+
+## Apresentação da atualização
+
+![Menu original de Paradise?](docs/imagens/menu.png)
+
+![Jardins Celestes e interface](docs/imagens/jardins.png)
 
 ## Executar no ambiente de desenvolvimento
 
@@ -56,7 +62,7 @@ O menu de pausa permite **exportar e importar um JSON** para backup ou mudança 
 - Saúde, fome, sede e sono; ciclo de 13 minutos e pressão por privação de sono após cerca de 3,5 ciclos.
 - Vinte chefes com silhuetas próprias, padrões e fases; nove ingredientes e progressão completa até a sequência final.
 - Lapsos discretos, replays de momentos registrados durante a partida e encerramento estabelecido no Documento Mestre.
-- Sprites e animações originais desenhados em uma resolução nativa de 640 × 360, tiles de 16 pixels e ampliação sem suavização. A arte é construída diretamente em pixels.
+- Sprites, retratos, ícones, fonte, marca, cenários e animações originais. Tiles de 16 pixels, canvas com proporção adaptativa e ampliação sem suavização. A arte é construída diretamente em pixels.
 - Música, ambiência e efeitos originais sintetizados localmente com WebAudio.
 
 Todos os menus, diálogos e cenas importantes pausam a simulação. A noite preserva a paleta acolhedora e a legibilidade.
@@ -70,7 +76,7 @@ npm test
 
 Os testes cobrem sobrevivência, crafting transacional, armas, armazenamento regional, acampamento, salvamento, progressão, conectividade dos mapas e campanhas nas duas dificuldades. O percurso de campanha usa deslocamento assistido entre pontos e combate pela API real da simulação.
 
-`EXPORT_CAMPAIGN=1 npm test` gera o save final usado pelo teste de interface. Com o servidor ativo, `node tests/browser.mjs` executa a verificação de interface com Playwright, quando disponível no ambiente de desenvolvimento, e guarda imagens em `tests/artifacts/`. As treze folhas PNG exportadas e o catálogo estão em `assets/`; `node scripts/export-art.mjs` as atualiza. Playwright não é uma dependência de execução do jogo.
+`EXPORT_CAMPAIGN=1 npm test` gera o save final usado pelo teste de interface. Com o servidor ativo, `node tests/browser.mjs` executa a verificação de interface com Playwright, quando disponível no ambiente de desenvolvimento, e guarda imagens em `tests/artifacts/`. As dezesseis folhas PNG exportadas e o catálogo estão em `assets/`; `node scripts/export-art.mjs` as atualiza. Playwright não é uma dependência de execução do jogo.
 
 ## Organização
 
@@ -88,4 +94,4 @@ Os testes cobrem sobrevivência, crafting transacional, armas, armazenamento reg
 - `tests/`: validações de sistemas, campanha e navegador.
 - `docs/`: Documento Mestre extraído, arquitetura e notas de narrativa.
 
-Não há publicação automática ou integração com serviços externos.
+A publicação dos aplicativos usa o workflow manual do GitHub Actions. [Direção de arte](docs/direcao-arte.md), [testes visuais](docs/qa-visual.md) e [distribuição](docs/distribuicao.md) documentam a atualização.
